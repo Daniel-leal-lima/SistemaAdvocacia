@@ -1,0 +1,291 @@
+﻿using SistemaRegistros.classes;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+
+namespace SistemaRegistros
+{
+    public partial class FrmCliente : Form
+    {
+        Cliente cliente = new Cliente();
+        ParteContraria parteContraria = new ParteContraria();
+        Processo processo = new Processo();
+        bool NovoCliente = false;          //VARIAVEIS PRA CONTROLAR CASO QUEIRA UM NOVO REGISTRO NA ALTERAÇÃO
+        bool NovaParteContraria = false;
+
+        public string FormataTexto(string conteudo)
+        {
+            return conteudo.Replace(".", "")
+                 .Replace("-", "")
+                 .Replace(" ", "")
+                 .Replace("/", "")
+                 .Replace("(", "")
+                 .Replace(")", "");
+        }
+        public void TrancaFormularioPraConsulta()
+        {
+            foreach (Control objeto in this.Controls)
+            {
+                if (objeto is GroupBox)
+                {
+                    foreach (Control elemento in objeto.Controls)
+                    {
+                        if (elemento is TextBox)
+                        {
+                            elemento.Enabled = false;
+                        }
+                        if (elemento is MaskedTextBox)
+                        {
+                            elemento.Enabled = false;
+                        }
+                        if (elemento is RadioButton)
+                        {
+                            elemento.Enabled = false;
+                        }
+                        if (elemento is ComboBox)
+                        {
+                            elemento.Enabled = false;
+                        }
+                    }
+                }
+                if (objeto is RichTextBox)
+                {
+                    objeto.Enabled = false;
+                }
+            }
+        }
+        public void InsereDadosNasClasses()//Serve pra Inserção
+        {
+            //CLIENTE
+            cliente.Nome = txtNomeRequerente.Text.ToUpper();
+            cliente.Cpf = FormataTexto(mskCpf.Text);
+            cliente.Telefone = FormataTexto(mskTelefone.Text);
+            //PARTE CONTRÁRIA
+            parteContraria.Nome = txtNomePContraria.Text.ToUpper();
+            if (rbFisico.Checked) {                                     //Se for Pessoa Física
+                parteContraria.Tipo = "F";
+                parteContraria.Cnpj = "";
+                parteContraria.Cpf = FormataTexto(mskCpfPContraria.Text);
+            }
+            else {                                                     //Se for Pessoa Juridica
+                parteContraria.Tipo = "J";
+                parteContraria.Cpf = "";
+                parteContraria.Cnpj = FormataTexto(mskCpfPContraria.Text);
+                
+            }
+            //PROCESSO
+            processo.NumProcesso = FormataTexto(mskNumProcesso.Text);
+            processo.Foro = txtForo.Text;
+            processo.TipoAcao = cbTipoAcao.Text;
+            processo.Area = cbArea.Text;
+            processo.AndamentoProcesso = RtxtAndamento.Text;
+            processo.IdCliente = cliente.IdCliente;
+            processo.IdParteContraria = parteContraria.IdParteContraria;
+            switch (cbIndicacao.SelectedIndex)
+            {
+                case 0:
+                    processo.FoiIndicacao = "S";
+                    processo.NomeCaptador = txtNomeCaptador.Text.ToUpper();
+                    processo.LocalDescobrimento = cbFormadescoberta.Text;
+                    break;
+                case 1:
+                    processo.FoiIndicacao = "N";
+                    processo.NomeCaptador = "";
+                    processo.LocalDescobrimento = "";
+                    break;
+            }
+        }
+        public void Arranja() //Serve pra consulta
+        {
+            //CLIENTE
+            txtNomeRequerente.Text = cliente.Nome;
+            mskCpf.Text = cliente.Cpf;
+            mskTelefone.Text = cliente.Telefone;
+            //PARTE CONTRÁRIA
+            txtNomePContraria.Text = parteContraria.Nome;
+            switch (parteContraria.Tipo)
+            {
+                case "F": //Se for Pessoa Física
+                    rbFisico.Checked = true;
+                    mskCpfPContraria.Text = parteContraria.Cpf;
+                    break;
+                case "J": //Se for Pessoa Juridica
+                    rbJuridico.Checked = true;
+                    mskCpfPContraria.Text = parteContraria.Cnpj;
+                    break;
+            }
+            //PROCESSO
+            mskNumProcesso.Text = processo.NumProcesso;
+            txtForo.Text = processo.Foro;
+            cbTipoAcao.Text = processo.TipoAcao;
+            cbArea.Text = processo.Area;
+            RtxtAndamento.Text = processo.AndamentoProcesso;
+            processo.IdCliente = cliente.IdCliente;
+            processo.IdParteContraria = parteContraria.IdParteContraria;
+            switch (processo.FoiIndicacao)
+            {
+                case "S":
+                    cbIndicacao.SelectedIndex = 0; // ITEM : SIM
+                    txtNomeCaptador.Text = processo.NomeCaptador;
+                    cbFormadescoberta.Text =processo.LocalDescobrimento;
+                    break;
+                case "N":
+                    cbIndicacao.SelectedIndex = 1; // ITEM : NÃO
+                    txtNomeCaptador.Text = "";
+                    cbFormadescoberta.Text = "";
+                    break;
+            }
+        }
+    
+
+        public void MudaPfPraPe()
+        {
+            bool tipoFisico = rbFisico.Checked;
+            if (tipoFisico)
+            {
+                lblNomePContraria.Text = "*Nome completo:";
+                lblCpf_CnpjContraria.Text = "CPF:";
+                mskCpfPContraria.Mask = "000\\.000\\.000-00";
+            }
+            else
+            {
+                lblNomePContraria.Text = "*Nome da Empresa:";
+                lblCpf_CnpjContraria.Text = "CNPJ:";
+                mskCpfPContraria.Mask = "00\\.000\\.000\\/0000\\-00";
+            }
+        }
+        public FrmCliente()
+        {
+            InitializeComponent();
+            InsereDadosNasClasses();
+            cbIndicacao.SelectedIndex = 0;
+            cbFormadescoberta.SelectedItem = 0;
+        }
+
+        public FrmCliente(Cliente cliente, ParteContraria parteContraria, Processo processo,char tag)
+        {
+            InitializeComponent();
+            this.cliente = cliente;
+            this.parteContraria = parteContraria;
+            this.processo = processo;
+            LocalizaProcesso();
+            Arranja();
+            if (tag.Equals('A'))
+            {
+                btnCadastra.Text = "Alterar";
+            }
+            else
+            {
+                btnCadastra.Visible = false;
+                TrancaFormularioPraConsulta();
+            }
+        }
+
+        private void FrmCliente_Load(object sender, EventArgs e)
+        {
+            rbFisico.Checked = true;
+            MudaPfPraPe();
+        }
+
+        private void btnCadastra_Click(object sender, EventArgs e)
+        {
+            SqlAuxiliar sqlAux = new SqlAuxiliar();
+            try
+            {
+                InsereDadosNasClasses();
+                if (btnCadastra.Text.Equals("Cadastrar"))
+                {
+                    //CADASTRA 
+
+                    sqlAux.CadastraProcesso(cliente, parteContraria, processo,
+                        NovoCliente,NovaParteContraria);
+                    MessageBox.Show("CADASTRADO com sucesso!");
+
+                }
+                else
+                {
+                    //ALTERA
+                    
+                    sqlAux.AlteraProcesso(cliente, parteContraria, processo,
+                        NovoCliente,NovaParteContraria);
+                    MessageBox.Show("ALTERADO com sucesso!");
+                }
+                /*MessageBox.Show(cliente.ToString() + "\n" + //    --------LOG PRA VER SE O VALOR ESTÁ INDO PRAS CLASSES
+                        parteContraria.ToString() + "\n" +           
+                        processo.ToString());*/
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
+
+        }
+
+        private void MudaRadioButton(object sender, EventArgs e)
+        {
+            MudaPfPraPe();
+        }
+
+        private void LocalizaProcesso()
+        {
+            SqlAuxiliar sqlAux = new SqlAuxiliar();
+            InsereDadosNasClasses();
+            sqlAux.LocalizaProcesso(cliente,parteContraria,processo);
+            Arranja();
+        }
+        private void IdentificaCliente()
+        {
+            SqlAuxiliar sqlAux = new SqlAuxiliar();
+            InsereDadosNasClasses();
+
+            if (sqlAux.IsClienteNovo(cliente))              //CASO SEJA UM NOVO CLIENTE
+            {
+                sqlAux.PegaUltimoIdCliente(cliente);
+                NovoCliente = true;
+            }
+            else
+            {
+                MessageBox.Show("Requerente já cadastrado no sistema! Completando informações");
+                Arranja();
+            }
+        }
+        private void IdentificaParteContraria()
+        {
+            SqlAuxiliar sqlAux = new SqlAuxiliar();
+            InsereDadosNasClasses();
+                if (sqlAux.IsParteContrariaNovo(parteContraria)) //CASO SEJA UM NOVA PARTE CONTRÁRIA
+            {
+                    sqlAux.PegaUltimoIdParteContraria(parteContraria);
+                    NovaParteContraria = true;
+            }
+                else
+                {
+                    MessageBox.Show("Parte Contrária já cadastrado no sistema! Completando informações");
+                    Arranja();
+                }
+        }
+
+        private void mskCpf_Leave(object sender, EventArgs e)
+        {
+            String texto = FormataTexto(mskCpf.Text);
+            if (texto.Length > 0)
+            {
+                IdentificaCliente();
+            }
+        }
+
+        private void mskCpfPContraria_Leave(object sender, EventArgs e)
+        {
+            String texto = FormataTexto(mskCpfPContraria.Text);
+            if (texto.Length>0)
+            {
+                IdentificaParteContraria();
+            }
+        }
+    }
+}

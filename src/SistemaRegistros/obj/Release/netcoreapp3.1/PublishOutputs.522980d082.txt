@@ -1,0 +1,11 @@
+C:\Users\Intel\Desktop\Sistema Advocacia\SistemaRegistros\bin\Release\netcoreapp3.1\publish\SistemaRegistros.exe
+C:\Users\Intel\Desktop\Sistema Advocacia\SistemaRegistros\bin\Release\netcoreapp3.1\publish\SistemaRegistros.dll
+C:\Users\Intel\Desktop\Sistema Advocacia\SistemaRegistros\bin\Release\netcoreapp3.1\publish\SistemaRegistros.deps.json
+C:\Users\Intel\Desktop\Sistema Advocacia\SistemaRegistros\bin\Release\netcoreapp3.1\publish\SistemaRegistros.runtimeconfig.json
+C:\Users\Intel\Desktop\Sistema Advocacia\SistemaRegistros\bin\Release\netcoreapp3.1\publish\SistemaRegistros.pdb
+C:\Users\Intel\Desktop\Sistema Advocacia\SistemaRegistros\bin\Release\netcoreapp3.1\publish\System.Data.SqlClient.dll
+C:\Users\Intel\Desktop\Sistema Advocacia\SistemaRegistros\bin\Release\netcoreapp3.1\publish\runtimes\win-arm64\native\sni.dll
+C:\Users\Intel\Desktop\Sistema Advocacia\SistemaRegistros\bin\Release\netcoreapp3.1\publish\runtimes\win-x64\native\sni.dll
+C:\Users\Intel\Desktop\Sistema Advocacia\SistemaRegistros\bin\Release\netcoreapp3.1\publish\runtimes\win-x86\native\sni.dll
+C:\Users\Intel\Desktop\Sistema Advocacia\SistemaRegistros\bin\Release\netcoreapp3.1\publish\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Intel\Desktop\Sistema Advocacia\SistemaRegistros\bin\Release\netcoreapp3.1\publish\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
