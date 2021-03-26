@@ -34,5 +34,6 @@ namespace SistemaRegistros
         public string Nome { get => _nome; set => _nome = value; }
         public string Cpf { get => _cpf; set => _cpf = value; }
         public string Telefone { get => _telefone; set => _telefone = value; }
+        
     }
 }

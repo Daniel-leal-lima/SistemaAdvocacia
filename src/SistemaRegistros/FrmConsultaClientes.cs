@@ -110,5 +110,9 @@ namespace SistemaRegistros
             this.Close();
         }
 
+        private void FrmConsultaClientes_Activated(object sender, EventArgs e)
+        {
+            RefreshDgv();
+        }
     }
 }

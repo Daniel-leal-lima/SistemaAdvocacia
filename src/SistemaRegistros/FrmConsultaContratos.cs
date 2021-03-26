@@ -52,28 +52,37 @@ namespace SistemaRegistros
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             RefreshDgv();
+            cbFiltros.SelectedIndex = 0;
         }
 
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
             SqlAuxiliar sqlAux = new SqlAuxiliar();
-            sqlAux.PesquisaContrato(dgvContratos, cbFiltros.Text,txtPesquisa.Text);
+            sqlAux.PesquisaContrato(dgvContratos, cbFiltros.Text,txtPesquisa.Text,
+                cbFiltros.SelectedIndex);
         }
 
         private void cbFiltros_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox cb = (ComboBox)sender;
-            if((cb.SelectedIndex == 3))
-            {
-                btnCadastrar.Enabled = true;
-                btnVer.Enabled = false;
-                btnAlterar.Enabled = false;
-            }
-            else { 
-                btnCadastrar.Enabled = false;
-                btnVer.Enabled = true;
-                btnAlterar.Enabled = true;
-            }
+                SqlAuxiliar sqlAux = new SqlAuxiliar();
+                switch (cb.SelectedIndex)
+                {
+                    
+                    case 5: // ITEM : PROCESSOS NÃO REGISTRADOS
+                        btnCadastrar.Enabled = true;
+                        btnVer.Enabled = false;
+                        btnAlterar.Enabled = false;
+                        
+                        sqlAux.PesquisaContrato(dgvContratos, cb.Text, string.Empty, cb.SelectedIndex);
+                        break;
+                    default:
+                        btnCadastrar.Enabled = false;
+                        btnVer.Enabled = true;
+                        btnAlterar.Enabled = true;
+                        break;
+
+                }                
         }
 
         private void btnAlterar_Click(object sender, EventArgs e)
@@ -94,12 +103,10 @@ namespace SistemaRegistros
         private void btnVer_Click(object sender, EventArgs e)
         {
             int idCliente = int.Parse(dgvContratos.CurrentRow.Cells[0].Value.ToString());
-            int idParteContraria = int.Parse(dgvContratos.CurrentRow.Cells[1].Value.ToString());
-            int idProcesso = int.Parse(dgvContratos.CurrentRow.Cells[2].Value.ToString());
-            int idContrato = int.Parse(dgvContratos.CurrentRow.Cells[3].Value.ToString());
+            int idProcesso = int.Parse(dgvContratos.CurrentRow.Cells[1].Value.ToString());
+            int idContrato = int.Parse(dgvContratos.CurrentRow.Cells[2].Value.ToString());
 
             Cliente cliente = new Cliente(idCliente);
-            ParteContraria parteContraria = new ParteContraria(idParteContraria);
             Processo processo = new Processo(idProcesso);
             Contrato contrato = new Contrato(idContrato);
             FrmContrato frmVisualizaContrato = new FrmContrato(cliente, processo,
@@ -119,6 +126,12 @@ namespace SistemaRegistros
         public void fechaForm(object sender, FormClosedEventArgs e)
         {
             this.Close();
+        }
+
+        private void FrmConsultaContratos_Activated(object sender, EventArgs e)
+        {
+            //cbFiltros.SelectedIndex = 0;
+            //RefreshDgv();
         }
     }
 }

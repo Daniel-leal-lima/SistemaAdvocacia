@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Intel\\Desktop\\Sistema Advocacia\\SistemaRegistros\\SistemaRegistros.csproj": {}
+    "C:\\Users\\Intel\\Desktop\\Sistema Advocacia\\src\\SistemaRegistros\\SistemaRegistros.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Intel\\Desktop\\Sistema Advocacia\\SistemaRegistros\\SistemaRegistros.csproj": {
+    "C:\\Users\\Intel\\Desktop\\Sistema Advocacia\\src\\SistemaRegistros\\SistemaRegistros.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Intel\\Desktop\\Sistema Advocacia\\SistemaRegistros\\SistemaRegistros.csproj",
+        "projectUniqueName": "C:\\Users\\Intel\\Desktop\\Sistema Advocacia\\src\\SistemaRegistros\\SistemaRegistros.csproj",
         "projectName": "SistemaRegistros",
-        "projectPath": "C:\\Users\\Intel\\Desktop\\Sistema Advocacia\\SistemaRegistros\\SistemaRegistros.csproj",
+        "projectPath": "C:\\Users\\Intel\\Desktop\\Sistema Advocacia\\src\\SistemaRegistros\\SistemaRegistros.csproj",
         "packagesPath": "C:\\Users\\Intel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Intel\\Desktop\\Sistema Advocacia\\SistemaRegistros\\obj\\",
+        "outputPath": "C:\\Users\\Intel\\Desktop\\Sistema Advocacia\\src\\SistemaRegistros\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Intel\\AppData\\Roaming\\NuGet\\NuGet.Config",

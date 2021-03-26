@@ -16,6 +16,8 @@ namespace SistemaRegistros
         Processo processo = new Processo();
         Contrato contrato = new Contrato();
         Parcelas parcela = new Parcelas();
+        string tag = string.Empty;
+        int contadorClickCelula = 0;
         public FrmContrato()
         {
             InitializeComponent();
@@ -28,7 +30,7 @@ namespace SistemaRegistros
             LocalizaProcessoDoCliente();
             Arranja();
             IdentificaContrato();
-
+            cbDividoEm.SelectedIndex = 0;
         }
 
         public FrmContrato(Cliente cliente,
@@ -50,8 +52,53 @@ namespace SistemaRegistros
             else                                                //CASO A USUARIA FOR cONSULTAR ALGUM REGISTRO
             {
                 btnCadastraCobranca.Visible = false;
-                PegaIndiceParcelas();
-            }   
+                TrancaFormularioPraConsulta();
+            }
+            this.tag = tag.ToString();
+        }
+        public void TrancaFormularioPraConsulta()
+        {
+            foreach (Control objeto in this.Controls)
+            {
+                if (objeto is GroupBox)
+                {
+                    foreach (Control elemento in objeto.Controls)
+                    {
+                        if (elemento is TextBox)
+                        {
+                            TextBox obj = (TextBox)elemento;
+                            obj.ReadOnly = true;
+                        }
+                        if (elemento is MaskedTextBox)
+                        {
+                            MaskedTextBox obj = (MaskedTextBox)elemento;
+                            obj.ReadOnly = true;
+                        }
+                        if (elemento is RadioButton)
+                        {
+                            RadioButton obj = (RadioButton)elemento;
+                            obj.Enabled = false;
+                        }
+                        if (elemento is ComboBox)
+                        {
+                            ComboBox obj = (ComboBox)elemento;
+                            obj.DropDownStyle = ComboBoxStyle.Simple;
+                            obj.KeyPress += Obj_KeyPress;
+                            obj.BackColor = Control.DefaultBackColor;
+                        }
+                    }
+                }
+                if (objeto is RichTextBox)
+                {
+                    RichTextBox obj = (RichTextBox)objeto;
+                    obj.ReadOnly = true;
+
+                }
+            }
+        }
+        private void Obj_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
         }
 
         public void LocalizaProcessoDoCliente()
@@ -70,9 +117,11 @@ namespace SistemaRegistros
             //PARCELA
             parcela.IdContrato = contrato.IdContrato;
             parcela.IdCliente = cliente.IdCliente;
-            parcela.DataPagamento = mskDataVencimento.Text.Replace(" ","");
-            parcela.Valor = double.Parse(txtValor.Text);
-            //parcela.Observacao = ?
+            if (tag.Equals(string.Empty))
+                parcela.Valor = double.Parse(txtValorDasParcelas.Text);
+            else
+                parcela.Valor = double.Parse(txtValorParcela.Text);
+            parcela.DataVencimento = DtpDataVencimento.Value.ToShortDateString();
             switch (cbSituacao.Text)
             {
                 case "Pago":
@@ -82,14 +131,9 @@ namespace SistemaRegistros
                     parcela.Situacao = "D";
                     break;
             }
+            parcela.Observacao = RtxtObsParcela.Text;
             //CONTRATO
             contrato.IdProcesso = processo.IdProcesso;
-            contrato.Observacoes = RtxtObs.Text;
-            contrato.DataContrato = mskDataContrato.Text.Replace(" ","");
-            contrato.ValorTotal = double.Parse(txtValorTotal.Text);
-            contrato.ValorEntrada = double.Parse(txtValorEntrada.Text);
-            contrato.ValorComissao=double.Parse(txtValorComissao.Text);
-            
             switch (cbTipoDePagamento.Text)
             {
                 case "Cartão":
@@ -105,6 +149,13 @@ namespace SistemaRegistros
                     contrato.QtdVezes = 1;
                     break;
             }
+            contrato.Observacoes = RtxtObsContrato.Text;
+            contrato.DiaVencimento = txtDiaDeVencimento.Text;
+            contrato.DataContrato = dtpDataContrato.Value.ToShortDateString();
+            contrato.ValorTotal = double.Parse(txtValorTotal.Text);
+            contrato.ValorEntrada = double.Parse(txtValorEntrada.Text);
+            contrato.ValorComissao=double.Parse(txtValorComissao.Text);
+            
         }
         public void Arranja(){
             //CLIENTE
@@ -113,24 +164,36 @@ namespace SistemaRegistros
             mskCpf.Text = cliente.Cpf;
             //PROCESSO
             mskNumProcesso.Text = processo.NumProcesso;
-            //cbTipoAcao.Text = processo.TipoAcao;
-            //cbArea.Text = processo.Area;
+            switch (processo.FoiIndicacao)
+            {
+                case "S":
+                    txtFoiIndicacao.Text = "Sim";
+                    break;
+                case "N":
+                    txtFoiIndicacao.Text = "Não";
+                    break;
+            }
+            txtNomeCaptador.Text = processo.NomeCaptador;
+            txtLocalDescobrimento.Text = processo.LocalDescobrimento;
             processo.IdCliente = cliente.IdCliente;
             //PARCELA
-            mskDataVencimento.Text = parcela.DataPagamento;
-            txtValor.Text = parcela.Valor.ToString();
+            if (parcela.DataVencimento != null)
+            {
+                DtpDataVencimento.Value = DateTime.Parse(parcela.DataVencimento);
+            }
+            txtValorParcela.Text = parcela.Valor.ToString();
             switch (parcela.Situacao)
             {
                 case "P":
-                    cbSituacao.SelectedIndex = 0;
+                    cbSituacao.SelectedIndex = 1; //PAGO
                     break;
                 case "D":
-                    cbSituacao.SelectedIndex = 1;
+                    cbSituacao.SelectedIndex = 0; //DEVENDO
                     break;
             }
+            RtxtObsParcela.Text = parcela.Observacao;
             //CONTRATO
             contrato.IdProcesso = processo.IdProcesso;
-            RtxtObs.Text = contrato.Observacoes;
             switch (contrato.TipoPagamento)
             {
                 case "C":
@@ -143,6 +206,17 @@ namespace SistemaRegistros
                     cbTipoDePagamento.SelectedIndex = 2;
                     break;
             }
+            RtxtObsContrato.Text = contrato.Observacoes;
+            txtDiaDeVencimento.Text = contrato.DiaVencimento;
+            if (contrato.DataContrato != null)
+            {
+                dtpDataContrato.Value = DateTime.Parse(contrato.DataContrato);
+            }
+            cbDividoEm.Text = contrato.QtdVezes.ToString();
+            txtValorTotal.Text = contrato.ValorTotal.ToString();
+            txtValorEntrada.Text = contrato.ValorEntrada.ToString();
+            txtValorComissao.Text = contrato.ValorComissao.ToString();
+            
         }
         public void IdentificaContrato() {
             SqlAuxiliar sqlAux = new SqlAuxiliar();
@@ -153,26 +227,17 @@ namespace SistemaRegistros
             sqlAux.LocalizaContrato(contrato);
             RefreshDgv();
         }
-        public void PegaIndiceParcelas() {
-            int numero = dgvParcelas.Rows.Count-1;
-            if (numero == 1 )
-            {
-                cbDividoEm.Enabled = false;
-            }
-            else
-            {
-                cbDividoEm.Text = numero.ToString();
-            }
-        }
 
         private void FrmContrato_Load(object sender, EventArgs e)
         {   
             cbSituacao.SelectedIndex = 0;
             cbDividoEm.SelectedIndex = 0;
             cbTipoDePagamento.SelectedIndex = 0;
-            ToMoney(txtValor, "N2");
-            Arranja();
-            mskDataVencimento.Text = DateTime.Today.ToString("dd/MM/yy");
+            ToMoney(txtValorDasParcelas, "N2");
+            ToMoney(txtValorParcela, "N2");
+            ToMoney(txtValorTotal, "N2");
+            ToMoney(txtValorEntrada, "N2");
+            ToMoney(txtValorComissao, "N2");
         }
 
         public void ToMoney(TextBox text, string format = "C2")
@@ -190,39 +255,86 @@ namespace SistemaRegistros
 
         private void btnCadastraCobranca_Click(object sender, EventArgs e)
         {
-            
-            InsereDadosNasClasses();
-            SqlAuxiliar sqlAux = new SqlAuxiliar();
-            if (btnCadastraCobranca.Text.Equals("Alterar Cobrança")) {
-                //ALTERA
-                sqlAux.AlteraContrato(contrato);
-            }
-            else {
-            //CADASTRA
-                if (!cbDividoEm.Enabled)
+            try
+            {
+                bool insercaoValida = ((txtFoiIndicacao.Text.Equals("Sim") &&
+                                         double.Parse(txtValorComissao.Text) > 0) //VERIFICA SE FOI INDICACAO
+                                        ||
+                                        (txtFoiIndicacao.Text.Equals("Não"))
+                                            ) &&
+                    cbTipoDePagamento.Text.Length > 0 &&
+                    double.Parse(txtValorTotal.Text) > 0 &&
+                    txtDiaDeVencimento.Text.Replace(" ", "").Length > 0 &&
+                    double.Parse(txtValorEntrada.Text) > 0 &&
+                    dtpDataContrato.Text.Length > 0 &&
+                                        ((double.Parse(txtValorDasParcelas.Text) > 0
+                                            &&
+                                            (double.Parse(txtValorEntrada.Text) <
+                                            double.Parse(txtValorTotal.Text))))
+                                        ||                       //VERIFICA SE O VALOR DA ENTRADA É IGUAL O TOTAL 
+                                        (double.Parse(txtValorEntrada.Text) >=
+                                        double.Parse(txtValorTotal.Text)) &&
+                   int.Parse(cbDividoEm.Text) > 0;
+
+                if (insercaoValida)
                 {
-                    sqlAux.CadastraDivida(contrato, parcela, 1);
+                    InsereDadosNasClasses();
+
+                    SqlAuxiliar sqlAux = new SqlAuxiliar();
+                    if (btnCadastraCobranca.Text.Equals("Alterar Cobrança"))
+                    {
+                        //ALTERA
+                        sqlAux.AlteraContrato(contrato);
+                        MessageBox.Show("COBRANÇA ALTERADA!");
+                        this.Close();
+                    }
+                    else
+                    {
+                        //CADASTRA
+                        DtpDataVencimento.Value = dtpDataContrato.Value;
+                        sqlAux.CadastraDivida(contrato, parcela, DtpDataVencimento);
+                        MessageBox.Show("COBRANÇA CADASTRADA, VERIFIQUE A SITUAÇÃO DAS PARCELAS SE NECESSÁRIO!");
+
+                        //A PARTIR DO MOMENTO QUE CADASTRA PODE ALTERAR
+                        tag = "A";
+                        btnCadastraCobranca.Text = "Alterar Cobrança";
+                        btnAdicionaLinha.Visible = true;
+                        btnRemoveLinha.Visible = true;
+                        btnSalva.Visible = true;
+                    }
+                    RefreshDgv();
                 }
                 else
                 {
-                    int qtdVezes = int.Parse(cbDividoEm.Text);
-                    sqlAux.CadastraDivida(contrato, parcela, qtdVezes);
+                    MessageBox.Show("VERIFIQUE SE INSERIU OS DADOS CORRETAMENTE", "MENSAGEM", MessageBoxIcon.Error);
                 }
             }
-            RefreshDgv();
-            /*MessageBox.Show(contrato.ToString()+"\n"+
-                parcela.ToString());*/
+            catch(Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
         }
 
         private void RefreshDgv()
         {
             SqlAuxiliar sqlAux = new SqlAuxiliar();
             sqlAux.RefreshDivida(contrato,dgvParcelas);
+
+            //ALEM DE DAR REFRESH NO DGV
+            //TAMBÉM PEGAMOS O TOTAL DO QUANTO O CLIENTE JÁ PAGOU
+            lblTotalJaPago.Visible = true;
+            double totalAPagar = contrato.ValorTotal - sqlAux.SomaParcelas(contrato);
+            if (totalAPagar > 0)
+                lblTotalJaPago.Text = "TOTAL A PAGAR:" + "\n" +
+                    totalAPagar.ToString("C", CultureInfo.CurrentCulture);
+            else
+                lblTotalJaPago.Text = "SITUAÇÃO:" + "\n" +
+                    "QUITADO";
         }
 
         private void txtValor_TextChanged(object sender, EventArgs e)
         {
-            ToMoney(txtValor, "N2");
+            ToMoney(txtValorDasParcelas, "N2");
         }
 
         private void mskDataCobranca_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
@@ -237,6 +349,7 @@ namespace SistemaRegistros
             {
                 lblDividido.Enabled = true;
                 cbDividoEm.Enabled = true;
+                cbDividoEm.SelectedIndex = 0;
             }
             else {
                 lblDividido.Enabled = false;
@@ -245,41 +358,64 @@ namespace SistemaRegistros
             }
         }
 
-        private void dgvParcelas_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-           
-        }
 
         private void dgvParcelas_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
+                contadorClickCelula++;
                 parcela.IdParcela = int.Parse(dgvParcelas.CurrentRow.Cells[3].Value.ToString());
                 parcela.Valor = Double.Parse(dgvParcelas.CurrentRow.Cells[4].Value.ToString());
-                parcela.DataPagamento = dgvParcelas.CurrentRow.Cells[5].Value.ToString();
+                parcela.DataVencimento = dgvParcelas.CurrentRow.Cells[5].Value.ToString();
                 parcela.Situacao = dgvParcelas.CurrentRow.Cells[6].Value.ToString();
+                parcela.Observacao = dgvParcelas.CurrentRow.Cells[7].Value.ToString();
                 Arranja();
+                gpParcela.Visible = true;
+
             }
             catch (Exception err)
             {
-                MessageBox.Show("Você só poderá alterar um registro quando tiver um!");
+                MessageBox.Show("ERRO!");
             }
         }
 
         private void btnAdicionaLinha_Click(object sender, EventArgs e)
         {
-            SqlAuxiliar sqlAux = new SqlAuxiliar();
-            InsereDadosNasClasses();
-            sqlAux.CadastraParcela(parcela);
-            RefreshDgv();
+            if (gpParcela.Visible)
+            {
+                var dialogoConfirmacao =
+                    MessageBox.Show("TEM CERTEZA QUE QUER ADICIONAR UMA NOVA PARCELA?",
+                                         "CAIXA DE CONFIRMAÇÃO",
+                                         MessageBoxButtons.YesNo,
+                                         MessageBoxIcon.Information);
+                if (dialogoConfirmacao == DialogResult.Yes)
+                {
+                    SqlAuxiliar sqlAux = new SqlAuxiliar();
+                    InsereDadosNasClasses();
+                    sqlAux.CadastraParcela(parcela);
+                    RefreshDgv();
+                }
+            }
+            else
+            {
+                gpParcela.Visible = true;
+            }
         }
 
         private void btnRemoveLinha_Click(object sender, EventArgs e)
         {
-            SqlAuxiliar sqlAux = new SqlAuxiliar();
-            InsereDadosNasClasses();
-            sqlAux.RemoveParcela(parcela);
-            RefreshDgv();
+            var dialogoConfirmacao = 
+                MessageBox.Show("TEM CERTEZA QUE QUER DELETAR ESSA PARCELA?",
+                                     "CAIXA DE CONFIRMAÇÃO",
+                                     MessageBoxButtons.YesNo,
+                                     MessageBoxIcon.Warning);
+            if (dialogoConfirmacao == DialogResult.Yes)
+            {
+                SqlAuxiliar sqlAux = new SqlAuxiliar();
+                InsereDadosNasClasses();
+                sqlAux.RemoveParcela(parcela);
+                RefreshDgv();
+            }
         }
 
         private void btnSalva_Click(object sender, EventArgs e)
@@ -288,6 +424,52 @@ namespace SistemaRegistros
             InsereDadosNasClasses();
             sqlAux.AlteraParcela(parcela);
             RefreshDgv();
+        }
+
+        private void FormataTextoEmDinheiro(object sender, EventArgs e)
+        {
+            TextBox caixaTexto = (TextBox)sender;
+            ToMoney(caixaTexto, "N2");
+        }
+
+        private void gpParcela_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            while (!dtpDataContrato.Value.Day.ToString().Equals("5"))
+            {
+                dtpDataContrato.Value = dtpDataContrato.Value.AddDays(1);
+            }
+            
+        }
+
+        private void dgvParcelas_DoubleClick(object sender, EventArgs e)
+        {
+            if (tag.Equals("A"))
+            {
+                parcela.IdParcela = int.Parse(dgvParcelas.CurrentRow.Cells[3].Value.ToString());
+                parcela.Valor = Double.Parse(dgvParcelas.CurrentRow.Cells[4].Value.ToString());
+                parcela.DataVencimento = dgvParcelas.CurrentRow.Cells[5].Value.ToString();
+
+                switch (parcela.Situacao = dgvParcelas.CurrentRow.Cells[6].Value.ToString())
+                {
+                    case "Pago":
+                        parcela.Situacao = "D";
+                        break;
+                    case "Devendo":
+                        parcela.Situacao = "P";
+                        break;
+                }
+                parcela.Observacao = dgvParcelas.CurrentRow.Cells[7].Value.ToString();
+                Arranja();
+                gpParcela.Visible = true;
+                SqlAuxiliar sqlAux = new SqlAuxiliar();
+                sqlAux.AlteraParcelaRapido(parcela);
+                RefreshDgv();
+            }
         }
     }
 }

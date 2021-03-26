@@ -54,10 +54,15 @@ namespace SistemaRegistros
             // 
             // dgvContratos
             // 
+            this.dgvContratos.AllowUserToAddRows = false;
             this.dgvContratos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvContratos.Location = new System.Drawing.Point(48, 91);
+            this.dgvContratos.MultiSelect = false;
             this.dgvContratos.Name = "dgvContratos";
+            this.dgvContratos.ReadOnly = true;
+            this.dgvContratos.RowHeadersVisible = false;
             this.dgvContratos.RowTemplate.Height = 25;
+            this.dgvContratos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvContratos.Size = new System.Drawing.Size(480, 312);
             this.dgvContratos.TabIndex = 8;
             // 
@@ -83,10 +88,11 @@ namespace SistemaRegistros
             this.cbFiltros.FormattingEnabled = true;
             this.cbFiltros.Items.AddRange(new object[] {
             "Nome",
+            "CPF",
+            "Telefone",
+            "Nº Processo",
             "Data de Pagamento",
-            "Devendo",
-            "Processos Não Registrados",
-            "Dívidas não Registradas"});
+            "Processos Não Registrados"});
             this.cbFiltros.Location = new System.Drawing.Point(113, 25);
             this.cbFiltros.Name = "cbFiltros";
             this.cbFiltros.Size = new System.Drawing.Size(161, 23);
@@ -161,6 +167,7 @@ namespace SistemaRegistros
             this.Name = "FrmConsultaContratos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmConsultaContratos";
+            this.Activated += new System.EventHandler(this.FrmConsultaContratos_Activated);
             this.Load += new System.EventHandler(this.FrmConsultaContratos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvContratos)).EndInit();
             this.ResumeLayout(false);

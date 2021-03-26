@@ -17,6 +17,8 @@ namespace SistemaRegistros
         Processo processo = new Processo();
         bool NovoCliente = false;          //VARIAVEIS PRA CONTROLAR CASO QUEIRA UM NOVO REGISTRO NA ALTERAÇÃO
         bool NovaParteContraria = false;
+        string tag = string.Empty;
+        int contadorRb = 0;
 
         public string FormataTexto(string conteudo)
         {
@@ -37,28 +39,42 @@ namespace SistemaRegistros
                     {
                         if (elemento is TextBox)
                         {
-                            elemento.Enabled = false;
+                            TextBox obj =(TextBox)elemento;
+                            obj.ReadOnly = true;
                         }
                         if (elemento is MaskedTextBox)
                         {
-                            elemento.Enabled = false;
+                            MaskedTextBox obj = (MaskedTextBox)elemento;
+                            obj.ReadOnly = true;
                         }
                         if (elemento is RadioButton)
                         {
-                            elemento.Enabled = false;
+                            RadioButton obj = (RadioButton)elemento;
+                            obj.Enabled = false;
                         }
                         if (elemento is ComboBox)
                         {
-                            elemento.Enabled = false;
+                            ComboBox obj = (ComboBox)elemento;
+                            obj.DropDownStyle = ComboBoxStyle.Simple;
+                            obj.KeyPress += Obj_KeyPress;
+                            obj.BackColor = Control.DefaultBackColor;
                         }
                     }
                 }
                 if (objeto is RichTextBox)
                 {
-                    objeto.Enabled = false;
+                    RichTextBox obj = (RichTextBox)objeto;
+                    obj.ReadOnly = true;
+                    
                 }
             }
         }
+
+        private void Obj_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
         public void InsereDadosNasClasses()//Serve pra Inserção
         {
             //CLIENTE
@@ -89,14 +105,15 @@ namespace SistemaRegistros
             switch (cbIndicacao.SelectedIndex)
             {
                 case 0:
-                    processo.FoiIndicacao = "S";
-                    processo.NomeCaptador = txtNomeCaptador.Text.ToUpper();
-                    processo.LocalDescobrimento = cbFormadescoberta.Text;
-                    break;
-                case 1:
                     processo.FoiIndicacao = "N";
                     processo.NomeCaptador = "";
                     processo.LocalDescobrimento = "";
+                    break;
+                case 1:
+                    processo.FoiIndicacao = "S";
+                    
+                    processo.NomeCaptador = txtNomeCaptador.Text.ToUpper();
+                    processo.LocalDescobrimento = cbFormadescoberta.Text;
                     break;
             }
         }
@@ -130,12 +147,12 @@ namespace SistemaRegistros
             switch (processo.FoiIndicacao)
             {
                 case "S":
-                    cbIndicacao.SelectedIndex = 0; // ITEM : SIM
+                    cbIndicacao.SelectedIndex = 1; // ITEM : SIM
                     txtNomeCaptador.Text = processo.NomeCaptador;
                     cbFormadescoberta.Text =processo.LocalDescobrimento;
                     break;
                 case "N":
-                    cbIndicacao.SelectedIndex = 1; // ITEM : NÃO
+                    cbIndicacao.SelectedIndex = 0; // ITEM : NÃO
                     txtNomeCaptador.Text = "";
                     cbFormadescoberta.Text = "";
                     break;
@@ -184,6 +201,7 @@ namespace SistemaRegistros
                 btnCadastra.Visible = false;
                 TrancaFormularioPraConsulta();
             }
+            this.tag = tag.ToString();
         }
 
         private void FrmCliente_Load(object sender, EventArgs e)
@@ -194,30 +212,47 @@ namespace SistemaRegistros
 
         private void btnCadastra_Click(object sender, EventArgs e)
         {
-            SqlAuxiliar sqlAux = new SqlAuxiliar();
             try
             {
-                InsereDadosNasClasses();
-                if (btnCadastra.Text.Equals("Cadastrar"))
+            SqlAuxiliar sqlAux = new SqlAuxiliar();
+            bool insercaoValida = FormataTexto(mskNumProcesso.Text).Length>0 &&
+                FormataTexto(cbArea.Text).Length > 0 && FormataTexto(txtForo.Text).Length > 0 &&
+                FormataTexto(cbTipoAcao.Text).Length > 0 &&
+                FormataTexto(mskCpf.Text).Length > 0 && FormataTexto(cbIndicacao.Text).Length > 0 &&
+                (rbFisico.Checked || rbJuridico.Checked) &&
+                FormataTexto(txtNomePContraria.Text).Length > 0;
+
+                if (insercaoValida)
                 {
-                    //CADASTRA 
+                    InsereDadosNasClasses();
+                    if (btnCadastra.Text.Equals("Cadastrar"))
+                    {
+                        //CADASTRA 
 
-                    sqlAux.CadastraProcesso(cliente, parteContraria, processo,
-                        NovoCliente,NovaParteContraria);
-                    MessageBox.Show("CADASTRADO com sucesso!");
+                        sqlAux.CadastraProcesso(cliente, parteContraria, processo,
+                            NovoCliente, NovaParteContraria);
+                        MessageBox.Show("CADASTRADO com sucesso!", "MENSAGEM",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                    }
+                    else
+                    {
+                        //ALTERA
+
+                        sqlAux.AlteraProcesso(cliente, parteContraria, processo,
+                            NovoCliente, NovaParteContraria);
+                        MessageBox.Show("ALTERADO com sucesso!", "MENSAGEM",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    this.Close();
+                    /*MessageBox.Show(cliente.ToString() + "\n" + //    --------LOG PRA VER SE O VALOR ESTÁ INDO PRAS CLASSES
+                            parteContraria.ToString() + "\n" +           
+                            processo.ToString());*/
                 }
                 else
                 {
-                    //ALTERA
-                    
-                    sqlAux.AlteraProcesso(cliente, parteContraria, processo,
-                        NovoCliente,NovaParteContraria);
-                    MessageBox.Show("ALTERADO com sucesso!");
+                    MessageBox.Show("VERIFIQUE SE INSERIU OS DADOS CORRETAMENTE", "MENSAGEM", MessageBoxIcon.Error);
                 }
-                /*MessageBox.Show(cliente.ToString() + "\n" + //    --------LOG PRA VER SE O VALOR ESTÁ INDO PRAS CLASSES
-                        parteContraria.ToString() + "\n" +           
-                        processo.ToString());*/
             }
             catch (Exception err)
             {
@@ -229,6 +264,44 @@ namespace SistemaRegistros
         private void MudaRadioButton(object sender, EventArgs e)
         {
             MudaPfPraPe();
+            if (contadorRb > 0)
+            {
+                ValidaCpfeCnpj();
+            }
+            contadorRb++;
+        }
+
+        private void ValidaCpfeCnpj()
+        {
+            if (FormataTexto(mskCpfPContraria.Text).Length>0)
+            {
+                if (rbFisico.Checked)
+                {
+                    bool cpfValido = Validacao.ValidaCpf(mskCpfPContraria.Text);
+                    if (cpfValido)
+                    {
+                        String texto = FormataTexto(mskCpfPContraria.Text);
+                        if (texto.Length > 0)
+                        {
+                            IdentificaParteContraria();
+                        }
+                    }
+                    else { MessageBox.Show("CPF INVÁLIDO"); }
+                }
+                else
+                {
+                    bool cnpjValido = Validacao.ValidaCnpj(mskCpfPContraria.Text);
+                    if (cnpjValido)
+                    {
+                        String texto = FormataTexto(mskCpfPContraria.Text);
+                        if (texto.Length > 0)
+                        {
+                            IdentificaParteContraria();
+                        }
+                    }
+                    else { MessageBox.Show("CNPJ INVÁLIDO"); }
+                }
+            }
         }
 
         private void LocalizaProcesso()
@@ -242,50 +315,60 @@ namespace SistemaRegistros
         {
             SqlAuxiliar sqlAux = new SqlAuxiliar();
             InsereDadosNasClasses();
-
-            if (sqlAux.IsClienteNovo(cliente))              //CASO SEJA UM NOVO CLIENTE
+            if (tag.Equals(string.Empty) || tag.Equals("A")) // SÓ IDENTIFICA SE FOR CADASTRAR OU ALTERAR REGISTRO
             {
-                sqlAux.PegaUltimoIdCliente(cliente);
-                NovoCliente = true;
-            }
-            else
-            {
-                MessageBox.Show("Requerente já cadastrado no sistema! Completando informações");
-                Arranja();
+                if (sqlAux.IsClienteNovo(cliente))              //CASO SEJA UM NOVO CLIENTE
+                {
+                    sqlAux.PegaUltimoIdCliente(cliente);
+                    NovoCliente = true;
+                }
+                else
+                {
+                    MessageBox.Show("Requerente já cadastrado no sistema! Completando informações");
+                    Arranja();
+                }
             }
         }
         private void IdentificaParteContraria()
         {
             SqlAuxiliar sqlAux = new SqlAuxiliar();
             InsereDadosNasClasses();
-                if (sqlAux.IsParteContrariaNovo(parteContraria)) //CASO SEJA UM NOVA PARTE CONTRÁRIA
+            if (tag.Equals(string.Empty) || tag.Equals("A")) // SÓ IDENTIFICA SE FOR CADASTRAR OU ALTERAR REGISTRO
             {
+                if (sqlAux.IsParteContrariaNovo(parteContraria)) //CASO SEJA UM NOVA PARTE CONTRÁRIA
+                {
                     sqlAux.PegaUltimoIdParteContraria(parteContraria);
                     NovaParteContraria = true;
-            }
+                }
                 else
                 {
                     MessageBox.Show("Parte Contrária já cadastrado no sistema! Completando informações");
                     Arranja();
                 }
+            }
         }
 
         private void mskCpf_Leave(object sender, EventArgs e)
         {
-            String texto = FormataTexto(mskCpf.Text);
-            if (texto.Length > 0)
+            bool cpfValido = Validacao.ValidaCpf(mskCpf.Text);
+            if (cpfValido)
             {
-                IdentificaCliente();
+                String texto = FormataTexto(mskCpf.Text);
+
+                if (texto.Length > 0)
+                {
+                    IdentificaCliente();
+                }
+            }
+            else
+            {
+                MessageBox.Show("CPF INVALIDO");
             }
         }
 
         private void mskCpfPContraria_Leave(object sender, EventArgs e)
         {
-            String texto = FormataTexto(mskCpfPContraria.Text);
-            if (texto.Length>0)
-            {
-                IdentificaParteContraria();
-            }
+            ValidaCpfeCnpj();
         }
     }
 }

@@ -105,7 +105,7 @@ namespace SistemaRegistros
             this.mskCpf.Location = new System.Drawing.Point(350, 36);
             this.mskCpf.Mask = "000\\.000\\.000-00";
             this.mskCpf.Name = "mskCpf";
-            this.mskCpf.Size = new System.Drawing.Size(80, 23);
+            this.mskCpf.Size = new System.Drawing.Size(98, 23);
             this.mskCpf.TabIndex = 10;
             this.mskCpf.Leave += new System.EventHandler(this.mskCpf_Leave);
             // 
@@ -181,8 +181,8 @@ namespace SistemaRegistros
             this.cbIndicacao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbIndicacao.FormattingEnabled = true;
             this.cbIndicacao.Items.AddRange(new object[] {
-            "Sim",
-            "Não"});
+            "Não",
+            "Sim"});
             this.cbIndicacao.Location = new System.Drawing.Point(102, 118);
             this.cbIndicacao.Name = "cbIndicacao";
             this.cbIndicacao.Size = new System.Drawing.Size(68, 23);
@@ -193,9 +193,9 @@ namespace SistemaRegistros
             this.lblFoiIndicacao.AutoSize = true;
             this.lblFoiIndicacao.Location = new System.Drawing.Point(19, 121);
             this.lblFoiIndicacao.Name = "lblFoiIndicacao";
-            this.lblFoiIndicacao.Size = new System.Drawing.Size(80, 15);
+            this.lblFoiIndicacao.Size = new System.Drawing.Size(85, 15);
             this.lblFoiIndicacao.TabIndex = 13;
-            this.lblFoiIndicacao.Text = "Foi indicação:";
+            this.lblFoiIndicacao.Text = "*Foi indicação:";
             // 
             // mskTelefone
             // 
@@ -235,9 +235,9 @@ namespace SistemaRegistros
             this.lblTipo.AutoSize = true;
             this.lblTipo.Location = new System.Drawing.Point(23, 30);
             this.lblTipo.Name = "lblTipo";
-            this.lblTipo.Size = new System.Drawing.Size(33, 15);
+            this.lblTipo.Size = new System.Drawing.Size(38, 15);
             this.lblTipo.TabIndex = 13;
-            this.lblTipo.Text = "Tipo:";
+            this.lblTipo.Text = "*Tipo:";
             // 
             // rbJuridico
             // 
@@ -268,7 +268,7 @@ namespace SistemaRegistros
             this.mskCpfPContraria.Location = new System.Drawing.Point(350, 63);
             this.mskCpfPContraria.Mask = "000\\.000\\.000-00";
             this.mskCpfPContraria.Name = "mskCpfPContraria";
-            this.mskCpfPContraria.Size = new System.Drawing.Size(75, 23);
+            this.mskCpfPContraria.Size = new System.Drawing.Size(94, 23);
             this.mskCpfPContraria.TabIndex = 10;
             this.mskCpfPContraria.Leave += new System.EventHandler(this.mskCpfPContraria_Leave);
             // 
@@ -338,9 +338,9 @@ namespace SistemaRegistros
             this.lblArea.AutoSize = true;
             this.lblArea.Location = new System.Drawing.Point(101, 64);
             this.lblArea.Name = "lblArea";
-            this.lblArea.Size = new System.Drawing.Size(34, 15);
+            this.lblArea.Size = new System.Drawing.Size(39, 15);
             this.lblArea.TabIndex = 21;
-            this.lblArea.Text = "Area:";
+            this.lblArea.Text = "*Area:";
             // 
             // txtForo
             // 
@@ -354,9 +354,9 @@ namespace SistemaRegistros
             this.lblForo.AutoSize = true;
             this.lblForo.Location = new System.Drawing.Point(293, 27);
             this.lblForo.Name = "lblForo";
-            this.lblForo.Size = new System.Drawing.Size(34, 15);
+            this.lblForo.Size = new System.Drawing.Size(39, 15);
             this.lblForo.TabIndex = 26;
-            this.lblForo.Text = "Foro:";
+            this.lblForo.Text = "*Foro:";
             // 
             // mskNumProcesso
             // 
@@ -371,9 +371,9 @@ namespace SistemaRegistros
             this.lblNProcesso.AutoSize = true;
             this.lblNProcesso.Location = new System.Drawing.Point(14, 27);
             this.lblNProcesso.Name = "lblNProcesso";
-            this.lblNProcesso.Size = new System.Drawing.Size(121, 15);
+            this.lblNProcesso.Size = new System.Drawing.Size(126, 15);
             this.lblNProcesso.TabIndex = 24;
-            this.lblNProcesso.Text = "Número do processo:";
+            this.lblNProcesso.Text = "*Número do processo:";
             // 
             // gpProcesso
             // 

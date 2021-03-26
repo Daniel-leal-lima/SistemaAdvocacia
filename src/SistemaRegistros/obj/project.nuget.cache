@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ThTfHxYduR+oVrvyRvnpglXbka4oDiiVxhcsOtnXbjjZjgKfAqAI4F5bXjpubE+IkG/kupHZEXU0LVR4oTnvsw==",
+  "dgSpecHash": "0gkTqmFtZNUzE1vxkg8tw9BJyMJIxG0W3PK3N/SNE6j83+gZTJm9dc35xYBK5ofR4c7v013+Cfvpd3EKIQ6oqw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Intel\\Desktop\\Sistema Advocacia\\SistemaRegistros\\SistemaRegistros.csproj",
+  "projectFilePath": "C:\\Users\\Intel\\Desktop\\Sistema Advocacia\\src\\SistemaRegistros\\SistemaRegistros.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Intel\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Intel\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",

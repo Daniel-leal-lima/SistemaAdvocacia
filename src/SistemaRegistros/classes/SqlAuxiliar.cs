@@ -169,6 +169,12 @@ namespace SistemaRegistros.classes
                     contrato.IdContrato  = int.Parse(dt.Rows[0][0].ToString());
                     contrato.TipoPagamento = dt.Rows[0][1].ToString();
                     contrato.Observacoes = dt.Rows[0][2].ToString();
+                    contrato.DiaVencimento = dt.Rows[0][3].ToString();
+                    contrato.DataContrato = dt.Rows[0][4].ToString();
+                    contrato.QtdVezes = int.Parse(dt.Rows[0][5].ToString());
+                    contrato.ValorTotal = double.Parse(dt.Rows[0][6].ToString());
+                    contrato.ValorEntrada = double.Parse(dt.Rows[0][7].ToString());
+                    contrato.ValorComissao = double.Parse(dt.Rows[0][8].ToString());
 
                 }
             }
@@ -210,10 +216,10 @@ namespace SistemaRegistros.classes
                     cliente.Cpf = dt.Rows[0][12].ToString();
                     cliente.Telefone = dt.Rows[0][13].ToString();
 
-                    parteContraria.Nome = cliente.Telefone = dt.Rows[0][14].ToString();
-                    parteContraria.Cpf = cliente.Telefone = dt.Rows[0][15].ToString();
-                    parteContraria.Cnpj = cliente.Telefone = dt.Rows[0][16].ToString();
-                    parteContraria.Tipo = cliente.Telefone = dt.Rows[0][17].ToString();
+                    parteContraria.Nome = dt.Rows[0][14].ToString();
+                    parteContraria.Cpf = dt.Rows[0][15].ToString();
+                    parteContraria.Cnpj = dt.Rows[0][16].ToString();
+                    parteContraria.Tipo = dt.Rows[0][17].ToString();
 
                 }
             }
@@ -314,6 +320,12 @@ namespace SistemaRegistros.classes
             cmd.Parameters.AddWithValue("@IdProcesso", contrato.IdProcesso);
             cmd.Parameters.AddWithValue("@TipoPagamento", contrato.TipoPagamento);
             cmd.Parameters.AddWithValue("@Observacao", contrato.Observacoes);
+            cmd.Parameters.AddWithValue("@DiaVencimento", contrato.DiaVencimento);
+            cmd.Parameters.AddWithValue("@DataContrato", contrato.DataContrato);
+            cmd.Parameters.AddWithValue("@QtdVezes", contrato.QtdVezes);
+            cmd.Parameters.AddWithValue("@ValorTotal", contrato.ValorTotal);
+            cmd.Parameters.AddWithValue("@ValorEntrada", contrato.ValorEntrada);
+            cmd.Parameters.AddWithValue("@ValorComissao", contrato.ValorComissao);
 
             cmd.ExecuteNonQuery();                                                      //CADASTROU CONTRATO
 
@@ -330,10 +342,31 @@ namespace SistemaRegistros.classes
             cmd.Parameters.AddWithValue("@IdCliente", parcelas.IdCliente);
             cmd.Parameters.AddWithValue("@IdContrato", parcelas.IdContrato);
             cmd.Parameters.AddWithValue("@Valor", parcelas.Valor);
-            cmd.Parameters.AddWithValue("@DataPagamento", parcelas.DataPagamento);
+            cmd.Parameters.AddWithValue("@DataVencimento", parcelas.DataVencimento);
             cmd.Parameters.AddWithValue("@Situacao", parcelas.Situacao);
+            cmd.Parameters.AddWithValue("@Observacao", parcelas.Observacao);
+
 
             cmd.ExecuteNonQuery();                                                      //CADASTROU PARCELA
+
+            con.FechaConexao();
+        }
+        public void CadastraEntradaParcela(Parcelas parcelas,Contrato contrato)
+        {
+            FabricaConexao con = new FabricaConexao();
+            con.AbreConexao();
+
+            SqlCommand cmd = new SqlCommand("spCadastraParcela", con.GetConexao());
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@IdCliente", parcelas.IdCliente);
+            cmd.Parameters.AddWithValue("@IdContrato", parcelas.IdContrato);
+            cmd.Parameters.AddWithValue("@Valor", contrato.ValorEntrada);
+            cmd.Parameters.AddWithValue("@DataVencimento", parcelas.DataVencimento);
+            cmd.Parameters.AddWithValue("@Situacao", parcelas.Situacao);
+            cmd.Parameters.AddWithValue("@Observacao", parcelas.Observacao);
+
+
+            cmd.ExecuteNonQuery();                                                      //CADASTROU ENTRADA PARCELA
 
             con.FechaConexao();
         }
@@ -352,12 +385,26 @@ namespace SistemaRegistros.classes
             con.FechaConexao();
         }
 
-        public void CadastraDivida(Contrato contrato,Parcelas parcelas,int qtdVezesDivisao) {
+        public void CadastraDivida(Contrato contrato,Parcelas parcelas,
+            DateTimePicker dtpParcela) {
+            int VezesDpsEntrada = contrato.QtdVezes - 1;
             CadastraContrato(contrato);
-
-            for(int contador = 0; contador < qtdVezesDivisao; contador++)
+            while (!dtpParcela.Value.Day.ToString().Equals(contrato.DiaVencimento)) // CHECA SE É O DIA DE VENCIMENTO
             {
-                CadastraParcela(parcelas);
+                dtpParcela.Value = dtpParcela.Value.AddDays(1);
+            }
+            parcelas.DataVencimento = dtpParcela.Value.ToShortDateString();
+
+            CadastraEntradaParcela(parcelas, contrato);
+
+            if (contrato.QtdVezes > 1)
+            {
+                for(int contador = 0; contador < VezesDpsEntrada; contador++)
+                {
+                    dtpParcela.Value = dtpParcela.Value.AddMonths(1);
+                    parcelas.DataVencimento = dtpParcela.Value.ToShortDateString();
+                    CadastraParcela(parcelas);
+                }
             }
                                                                                         //CADASTROU DIVIDA
         }
@@ -422,6 +469,12 @@ namespace SistemaRegistros.classes
             cmd.Parameters.AddWithValue("@IdContrato", contrato.IdContrato);
             cmd.Parameters.AddWithValue("@TipoPagamento", contrato.TipoPagamento);
             cmd.Parameters.AddWithValue("@Observacao", contrato.Observacoes);
+            cmd.Parameters.AddWithValue("@DiaVencimento", contrato.DiaVencimento);
+            cmd.Parameters.AddWithValue("@DataContrato", contrato.DataContrato);
+            cmd.Parameters.AddWithValue("@QtdVezes", contrato.QtdVezes);
+            cmd.Parameters.AddWithValue("@ValorTotal", contrato.ValorTotal);
+            cmd.Parameters.AddWithValue("@ValorEntrada ", contrato.ValorEntrada);
+            cmd.Parameters.AddWithValue("@ValorComissao", contrato.ValorComissao);
             cmd.ExecuteNonQuery();
 
             con.FechaConexao();
@@ -434,8 +487,50 @@ namespace SistemaRegistros.classes
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@IdParcela", parcela.IdParcela);
             cmd.Parameters.AddWithValue("@Valor", parcela.Valor);
-            cmd.Parameters.AddWithValue("@DataPagamento", parcela.DataPagamento);
+            cmd.Parameters.AddWithValue("@DataVencimento", parcela.DataVencimento);
             cmd.Parameters.AddWithValue("@Situacao", parcela.Situacao);
+            cmd.Parameters.AddWithValue("@Observacao", parcela.Observacao);
+            cmd.ExecuteNonQuery();
+
+            con.FechaConexao();
+        }
+
+        public Double SomaParcelas(Contrato contrato)
+        {
+            FabricaConexao con = new FabricaConexao();
+            con.AbreConexao();
+            SqlCommand cmd = new SqlCommand("spSomaParcelas", con.GetConexao());
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@IdContrato", contrato.IdContrato);
+            using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+            {
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                if (dt.Rows.Count <= 0)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (dt.Rows[0][0].ToString() != "")
+                        return double.Parse(dt.Rows[0][0].ToString());
+                    else
+                        return 0;
+                }
+            }
+            con.FechaConexao();
+        }
+        public void AlteraParcelaRapido(Parcelas parcela)
+        {
+            FabricaConexao con = new FabricaConexao();
+            con.AbreConexao();
+            SqlCommand cmd = new SqlCommand("spUpdateParcela", con.GetConexao());
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@IdParcela", parcela.IdParcela);
+            cmd.Parameters.AddWithValue("@Valor", parcela.Valor);
+            cmd.Parameters.AddWithValue("@DataVencimento", parcela.DataVencimento);
+            cmd.Parameters.AddWithValue("@Situacao", parcela.Situacao);
+            cmd.Parameters.AddWithValue("@Observacao", parcela.Observacao);
             cmd.ExecuteNonQuery();
 
             con.FechaConexao();
@@ -530,10 +625,13 @@ namespace SistemaRegistros.classes
                 DataTable dt = new DataTable();
                 sda.Fill(dt);
                 dgv.DataSource = dt;
+                dgv.Columns[0].Visible = true;
+                dgv.Columns[1].Visible = true;
+                dgv.Columns[2].Visible = true;
+
                 dgv.Columns[0].Visible = false;
                 dgv.Columns[1].Visible = false;
                 dgv.Columns[2].Visible = false;
-                dgv.Columns[3].Visible = false;
             }
             con.FechaConexao();
         }
@@ -553,6 +651,7 @@ namespace SistemaRegistros.classes
                 dgv.Columns[1].Visible = false;
                 dgv.Columns[2].Visible = false;
                 dgv.Columns[3].Visible = false;
+                dgv.Columns[7].Visible = false;
             }
             con.FechaConexao();
         }
@@ -578,7 +677,8 @@ namespace SistemaRegistros.classes
             }
             con.FechaConexao();
         }
-        public void PesquisaContrato(DataGridView dgv, string filtro, string texto)
+        public void PesquisaContrato(DataGridView dgv, string filtro, string texto,
+            int filtroIndex)
         {
             try
             {
@@ -595,7 +695,7 @@ namespace SistemaRegistros.classes
                     dgv.DataSource = dt;
                     if (dt.Rows.Count > 0)
                     {
-                        if (filtro.Equals("Clientes Não Cadastrados"))
+                        if (filtroIndex<=4) // LIMITE DO INDICE- PARA COBRIR COLUNAS
                         {
                             dgv.Columns[0].Visible = false;
                             dgv.Columns[1].Visible = false;
@@ -605,9 +705,12 @@ namespace SistemaRegistros.classes
                         {
                             dgv.Columns[0].Visible = false;
                             dgv.Columns[1].Visible = false;
-                            dgv.Columns[3].Visible = false;
                         }
 
+                    }
+                    else
+                    {
+                        dgv.DataSource = null;
                     }
                 }
                 con.FechaConexao();

@@ -65,10 +65,15 @@ namespace SistemaRegistros
             // 
             // dgvClientes
             // 
+            this.dgvClientes.AllowUserToAddRows = false;
             this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvClientes.Location = new System.Drawing.Point(44, 75);
+            this.dgvClientes.MultiSelect = false;
             this.dgvClientes.Name = "dgvClientes";
+            this.dgvClientes.ReadOnly = true;
+            this.dgvClientes.RowHeadersVisible = false;
             this.dgvClientes.RowTemplate.Height = 25;
+            this.dgvClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvClientes.Size = new System.Drawing.Size(480, 312);
             this.dgvClientes.TabIndex = 2;
             // 
@@ -160,6 +165,7 @@ namespace SistemaRegistros
             this.Name = "FrmConsultaClientes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmConsultaClientes";
+            this.Activated += new System.EventHandler(this.FrmConsultaClientes_Activated);
             this.Load += new System.EventHandler(this.FrmConsultaClientes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
             this.ResumeLayout(false);

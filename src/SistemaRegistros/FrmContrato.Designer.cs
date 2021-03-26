@@ -32,18 +32,19 @@ namespace SistemaRegistros
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmContrato));
             this.dgvParcelas = new System.Windows.Forms.DataGridView();
             this.lblParcelas = new System.Windows.Forms.Label();
-            this.RtxtObs = new System.Windows.Forms.RichTextBox();
-            this.lblObs = new System.Windows.Forms.Label();
+            this.RtxtObsContrato = new System.Windows.Forms.RichTextBox();
+            this.lblObsContrato = new System.Windows.Forms.Label();
             this.lblNProcesso = new System.Windows.Forms.Label();
             this.gpCobranca = new System.Windows.Forms.GroupBox();
-            this.mskDataContrato = new System.Windows.Forms.MaskedTextBox();
+            this.dtpDataContrato = new System.Windows.Forms.DateTimePicker();
+            this.lblTotalJaPago = new System.Windows.Forms.Label();
             this.lblDataContrato = new System.Windows.Forms.Label();
             this.txtValorEntrada = new System.Windows.Forms.TextBox();
             this.lblValorEntrada = new System.Windows.Forms.Label();
             this.txtValorTotal = new System.Windows.Forms.TextBox();
             this.txtDiaDeVencimento = new System.Windows.Forms.TextBox();
             this.lblValorTotal = new System.Windows.Forms.Label();
-            this.txtValor = new System.Windows.Forms.TextBox();
+            this.txtValorDasParcelas = new System.Windows.Forms.TextBox();
             this.lblDiaVencimento = new System.Windows.Forms.Label();
             this.lblValorAParcelar = new System.Windows.Forms.Label();
             this.cbTipoDePagamento = new System.Windows.Forms.ComboBox();
@@ -58,9 +59,9 @@ namespace SistemaRegistros
             this.btnAdicionaLinha = new System.Windows.Forms.Button();
             this.btnRemoveLinha = new System.Windows.Forms.Button();
             this.btnSalva = new System.Windows.Forms.Button();
-            this.mskDataVencimento = new System.Windows.Forms.MaskedTextBox();
             this.gpParcela = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.DtpDataVencimento = new System.Windows.Forms.DateTimePicker();
+            this.txtValorParcela = new System.Windows.Forms.TextBox();
             this.lblValorParcela = new System.Windows.Forms.Label();
             this.lblNomeRequerente = new System.Windows.Forms.Label();
             this.txtNomeRequerente = new System.Windows.Forms.TextBox();
@@ -68,8 +69,8 @@ namespace SistemaRegistros
             this.mskCpf = new System.Windows.Forms.MaskedTextBox();
             this.lbltelefone = new System.Windows.Forms.Label();
             this.mskTelefone = new System.Windows.Forms.MaskedTextBox();
-            this.dpRequerente = new System.Windows.Forms.GroupBox();
-            this.gbCaptador = new System.Windows.Forms.GroupBox();
+            this.gpRequerente = new System.Windows.Forms.GroupBox();
+            this.gpCaptador = new System.Windows.Forms.GroupBox();
             this.txtLocalDescobrimento = new System.Windows.Forms.TextBox();
             this.lblLocalDescobrimento = new System.Windows.Forms.Label();
             this.txtFoiIndicacao = new System.Windows.Forms.TextBox();
@@ -78,24 +79,30 @@ namespace SistemaRegistros
             this.txtNomeCaptador = new System.Windows.Forms.TextBox();
             this.lblNomeIndicacao = new System.Windows.Forms.Label();
             this.lblFoiIndicacao = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblObsParcela = new System.Windows.Forms.Label();
+            this.RtxtObsParcela = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvParcelas)).BeginInit();
             this.gpCobranca.SuspendLayout();
             this.gpParcela.SuspendLayout();
-            this.dpRequerente.SuspendLayout();
-            this.gbCaptador.SuspendLayout();
+            this.gpRequerente.SuspendLayout();
+            this.gpCaptador.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvParcelas
             // 
+            this.dgvParcelas.AllowUserToAddRows = false;
             this.dgvParcelas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvParcelas.Location = new System.Drawing.Point(9, 635);
+            this.dgvParcelas.MultiSelect = false;
             this.dgvParcelas.Name = "dgvParcelas";
+            this.dgvParcelas.ReadOnly = true;
+            this.dgvParcelas.RowHeadersVisible = false;
             this.dgvParcelas.RowTemplate.Height = 25;
+            this.dgvParcelas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvParcelas.Size = new System.Drawing.Size(279, 108);
             this.dgvParcelas.TabIndex = 9;
             this.dgvParcelas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvParcelas_CellClick);
-            this.dgvParcelas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvParcelas_CellContentClick);
+            this.dgvParcelas.DoubleClick += new System.EventHandler(this.dgvParcelas_DoubleClick);
             // 
             // lblParcelas
             // 
@@ -106,22 +113,22 @@ namespace SistemaRegistros
             this.lblParcelas.TabIndex = 10;
             this.lblParcelas.Text = "Parcelas:";
             // 
-            // RtxtObs
+            // RtxtObsContrato
             // 
-            this.RtxtObs.Location = new System.Drawing.Point(294, 635);
-            this.RtxtObs.Name = "RtxtObs";
-            this.RtxtObs.Size = new System.Drawing.Size(261, 108);
-            this.RtxtObs.TabIndex = 11;
-            this.RtxtObs.Text = "";
+            this.RtxtObsContrato.Location = new System.Drawing.Point(12, 776);
+            this.RtxtObsContrato.Name = "RtxtObsContrato";
+            this.RtxtObsContrato.Size = new System.Drawing.Size(276, 108);
+            this.RtxtObsContrato.TabIndex = 11;
+            this.RtxtObsContrato.Text = "";
             // 
-            // lblObs
+            // lblObsContrato
             // 
-            this.lblObs.AutoSize = true;
-            this.lblObs.Location = new System.Drawing.Point(283, 617);
-            this.lblObs.Name = "lblObs";
-            this.lblObs.Size = new System.Drawing.Size(31, 15);
-            this.lblObs.TabIndex = 12;
-            this.lblObs.Text = "Obs:";
+            this.lblObsContrato.AutoSize = true;
+            this.lblObsContrato.Location = new System.Drawing.Point(9, 758);
+            this.lblObsContrato.Name = "lblObsContrato";
+            this.lblObsContrato.Size = new System.Drawing.Size(144, 15);
+            this.lblObsContrato.TabIndex = 12;
+            this.lblObsContrato.Text = "Observações do Contrato:";
             // 
             // lblNProcesso
             // 
@@ -134,14 +141,15 @@ namespace SistemaRegistros
             // 
             // gpCobranca
             // 
-            this.gpCobranca.Controls.Add(this.mskDataContrato);
+            this.gpCobranca.Controls.Add(this.dtpDataContrato);
+            this.gpCobranca.Controls.Add(this.lblTotalJaPago);
             this.gpCobranca.Controls.Add(this.lblDataContrato);
             this.gpCobranca.Controls.Add(this.txtValorEntrada);
             this.gpCobranca.Controls.Add(this.lblValorEntrada);
             this.gpCobranca.Controls.Add(this.txtValorTotal);
             this.gpCobranca.Controls.Add(this.txtDiaDeVencimento);
             this.gpCobranca.Controls.Add(this.lblValorTotal);
-            this.gpCobranca.Controls.Add(this.txtValor);
+            this.gpCobranca.Controls.Add(this.txtValorDasParcelas);
             this.gpCobranca.Controls.Add(this.lblDiaVencimento);
             this.gpCobranca.Controls.Add(this.lblValorAParcelar);
             this.gpCobranca.Controls.Add(this.cbTipoDePagamento);
@@ -155,22 +163,33 @@ namespace SistemaRegistros
             this.gpCobranca.TabStop = false;
             this.gpCobranca.Text = "informações de Cobrança:";
             // 
-            // mskDataContrato
+            // dtpDataContrato
             // 
-            this.mskDataContrato.Location = new System.Drawing.Point(394, 113);
-            this.mskDataContrato.Mask = "00/00/00";
-            this.mskDataContrato.Name = "mskDataContrato";
-            this.mskDataContrato.Size = new System.Drawing.Size(56, 23);
-            this.mskDataContrato.TabIndex = 35;
+            this.dtpDataContrato.CustomFormat = "00/00/00";
+            this.dtpDataContrato.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDataContrato.Location = new System.Drawing.Point(393, 113);
+            this.dtpDataContrato.Name = "dtpDataContrato";
+            this.dtpDataContrato.Size = new System.Drawing.Size(91, 23);
+            this.dtpDataContrato.TabIndex = 37;
+            // 
+            // lblTotalJaPago
+            // 
+            this.lblTotalJaPago.AutoSize = true;
+            this.lblTotalJaPago.Location = new System.Drawing.Point(308, 157);
+            this.lblTotalJaPago.Name = "lblTotalJaPago";
+            this.lblTotalJaPago.Size = new System.Drawing.Size(38, 15);
+            this.lblTotalJaPago.TabIndex = 36;
+            this.lblTotalJaPago.Text = "label1";
+            this.lblTotalJaPago.Visible = false;
             // 
             // lblDataContrato
             // 
             this.lblDataContrato.AutoSize = true;
             this.lblDataContrato.Location = new System.Drawing.Point(287, 116);
             this.lblDataContrato.Name = "lblDataContrato";
-            this.lblDataContrato.Size = new System.Drawing.Size(101, 15);
+            this.lblDataContrato.Size = new System.Drawing.Size(106, 15);
             this.lblDataContrato.TabIndex = 33;
-            this.lblDataContrato.Text = "Data do Contrato:";
+            this.lblDataContrato.Text = "*Data do Contrato:";
             // 
             // txtValorEntrada
             // 
@@ -178,15 +197,16 @@ namespace SistemaRegistros
             this.txtValorEntrada.Name = "txtValorEntrada";
             this.txtValorEntrada.Size = new System.Drawing.Size(100, 23);
             this.txtValorEntrada.TabIndex = 34;
+            this.txtValorEntrada.TextChanged += new System.EventHandler(this.FormataTextoEmDinheiro);
             // 
             // lblValorEntrada
             // 
             this.lblValorEntrada.AutoSize = true;
             this.lblValorEntrada.Location = new System.Drawing.Point(29, 113);
             this.lblValorEntrada.Name = "lblValorEntrada";
-            this.lblValorEntrada.Size = new System.Drawing.Size(79, 15);
+            this.lblValorEntrada.Size = new System.Drawing.Size(84, 15);
             this.lblValorEntrada.TabIndex = 33;
-            this.lblValorEntrada.Text = "Valor Entrada:";
+            this.lblValorEntrada.Text = "*Valor Entrada:";
             // 
             // txtValorTotal
             // 
@@ -194,6 +214,7 @@ namespace SistemaRegistros
             this.txtValorTotal.Name = "txtValorTotal";
             this.txtValorTotal.Size = new System.Drawing.Size(100, 23);
             this.txtValorTotal.TabIndex = 32;
+            this.txtValorTotal.TextChanged += new System.EventHandler(this.FormataTextoEmDinheiro);
             // 
             // txtDiaDeVencimento
             // 
@@ -207,35 +228,35 @@ namespace SistemaRegistros
             this.lblValorTotal.AutoSize = true;
             this.lblValorTotal.Location = new System.Drawing.Point(44, 71);
             this.lblValorTotal.Name = "lblValorTotal";
-            this.lblValorTotal.Size = new System.Drawing.Size(64, 15);
+            this.lblValorTotal.Size = new System.Drawing.Size(69, 15);
             this.lblValorTotal.TabIndex = 31;
-            this.lblValorTotal.Text = "Valor Total:";
+            this.lblValorTotal.Text = "*Valor Total:";
             // 
-            // txtValor
+            // txtValorDasParcelas
             // 
-            this.txtValor.Location = new System.Drawing.Point(124, 149);
-            this.txtValor.Name = "txtValor";
-            this.txtValor.Size = new System.Drawing.Size(100, 23);
-            this.txtValor.TabIndex = 19;
-            this.txtValor.TextChanged += new System.EventHandler(this.txtValor_TextChanged);
+            this.txtValorDasParcelas.Location = new System.Drawing.Point(124, 149);
+            this.txtValorDasParcelas.Name = "txtValorDasParcelas";
+            this.txtValorDasParcelas.Size = new System.Drawing.Size(100, 23);
+            this.txtValorDasParcelas.TabIndex = 19;
+            this.txtValorDasParcelas.TextChanged += new System.EventHandler(this.FormataTextoEmDinheiro);
             // 
             // lblDiaVencimento
             // 
             this.lblDiaVencimento.AutoSize = true;
             this.lblDiaVencimento.Location = new System.Drawing.Point(283, 71);
             this.lblDiaVencimento.Name = "lblDiaVencimento";
-            this.lblDiaVencimento.Size = new System.Drawing.Size(109, 15);
+            this.lblDiaVencimento.Size = new System.Drawing.Size(114, 15);
             this.lblDiaVencimento.TabIndex = 20;
-            this.lblDiaVencimento.Text = "Dia de Vencimento:";
+            this.lblDiaVencimento.Text = "*Dia de Vencimento:";
             // 
             // lblValorAParcelar
             // 
             this.lblValorAParcelar.AutoSize = true;
             this.lblValorAParcelar.Location = new System.Drawing.Point(28, 152);
             this.lblValorAParcelar.Name = "lblValorAParcelar";
-            this.lblValorAParcelar.Size = new System.Drawing.Size(90, 15);
+            this.lblValorAParcelar.Size = new System.Drawing.Size(95, 15);
             this.lblValorAParcelar.TabIndex = 18;
-            this.lblValorAParcelar.Text = "Valor a Parcelar:";
+            this.lblValorAParcelar.Text = "*Valor a Parcelar:";
             // 
             // cbTipoDePagamento
             // 
@@ -279,9 +300,9 @@ namespace SistemaRegistros
             this.lbltipopagamento.AutoSize = true;
             this.lbltipopagamento.Location = new System.Drawing.Point(6, 29);
             this.lbltipopagamento.Name = "lbltipopagamento";
-            this.lbltipopagamento.Size = new System.Drawing.Size(113, 15);
+            this.lbltipopagamento.Size = new System.Drawing.Size(118, 15);
             this.lbltipopagamento.TabIndex = 0;
-            this.lbltipopagamento.Text = "Tipo de pagamento:";
+            this.lbltipopagamento.Text = "*Tipo de pagamento:";
             // 
             // cbSituacao
             // 
@@ -318,7 +339,7 @@ namespace SistemaRegistros
             // 
             // btnCadastraCobranca
             // 
-            this.btnCadastraCobranca.Location = new System.Drawing.Point(232, 763);
+            this.btnCadastraCobranca.Location = new System.Drawing.Point(361, 813);
             this.btnCadastraCobranca.Name = "btnCadastraCobranca";
             this.btnCadastraCobranca.Size = new System.Drawing.Size(121, 82);
             this.btnCadastraCobranca.TabIndex = 21;
@@ -331,6 +352,7 @@ namespace SistemaRegistros
             this.mskNumProcesso.Location = new System.Drawing.Point(262, 43);
             this.mskNumProcesso.Mask = "0000000-00\\.0000\\.0\\.00\\.0000";
             this.mskNumProcesso.Name = "mskNumProcesso";
+            this.mskNumProcesso.ReadOnly = true;
             this.mskNumProcesso.Size = new System.Drawing.Size(134, 23);
             this.mskNumProcesso.TabIndex = 26;
             // 
@@ -338,7 +360,7 @@ namespace SistemaRegistros
             // 
             this.btnAdicionaLinha.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAdicionaLinha.BackgroundImage")));
             this.btnAdicionaLinha.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnAdicionaLinha.Location = new System.Drawing.Point(36, 749);
+            this.btnAdicionaLinha.Location = new System.Drawing.Point(294, 680);
             this.btnAdicionaLinha.Name = "btnAdicionaLinha";
             this.btnAdicionaLinha.Size = new System.Drawing.Size(26, 21);
             this.btnAdicionaLinha.TabIndex = 28;
@@ -350,7 +372,7 @@ namespace SistemaRegistros
             // 
             this.btnRemoveLinha.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRemoveLinha.BackgroundImage")));
             this.btnRemoveLinha.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnRemoveLinha.Location = new System.Drawing.Point(68, 749);
+            this.btnRemoveLinha.Location = new System.Drawing.Point(294, 707);
             this.btnRemoveLinha.Name = "btnRemoveLinha";
             this.btnRemoveLinha.Size = new System.Drawing.Size(26, 21);
             this.btnRemoveLinha.TabIndex = 29;
@@ -362,7 +384,7 @@ namespace SistemaRegistros
             // 
             this.btnSalva.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSalva.BackgroundImage")));
             this.btnSalva.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSalva.Location = new System.Drawing.Point(100, 749);
+            this.btnSalva.Location = new System.Drawing.Point(294, 653);
             this.btnSalva.Name = "btnSalva";
             this.btnSalva.Size = new System.Drawing.Size(26, 21);
             this.btnSalva.TabIndex = 30;
@@ -370,37 +392,38 @@ namespace SistemaRegistros
             this.btnSalva.Visible = false;
             this.btnSalva.Click += new System.EventHandler(this.btnSalva_Click);
             // 
-            // mskDataVencimento
-            // 
-            this.mskDataVencimento.Location = new System.Drawing.Point(128, 54);
-            this.mskDataVencimento.Mask = "00/00/00";
-            this.mskDataVencimento.Name = "mskDataVencimento";
-            this.mskDataVencimento.Size = new System.Drawing.Size(65, 23);
-            this.mskDataVencimento.TabIndex = 14;
-            this.mskDataVencimento.ValidatingType = typeof(System.DateTime);
-            this.mskDataVencimento.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mskDataCobranca_MaskInputRejected);
-            // 
             // gpParcela
             // 
-            this.gpParcela.Controls.Add(this.textBox1);
+            this.gpParcela.Controls.Add(this.DtpDataVencimento);
+            this.gpParcela.Controls.Add(this.txtValorParcela);
             this.gpParcela.Controls.Add(this.lblValorParcela);
             this.gpParcela.Controls.Add(this.cbSituacao);
             this.gpParcela.Controls.Add(this.lblSituacao);
             this.gpParcela.Controls.Add(this.lblDataVencimento);
-            this.gpParcela.Controls.Add(this.mskDataVencimento);
             this.gpParcela.Location = new System.Drawing.Point(12, 506);
             this.gpParcela.Name = "gpParcela";
             this.gpParcela.Size = new System.Drawing.Size(549, 86);
             this.gpParcela.TabIndex = 31;
             this.gpParcela.TabStop = false;
             this.gpParcela.Text = "Informações de Parcela:";
+            this.gpParcela.Visible = false;
+            this.gpParcela.Enter += new System.EventHandler(this.gpParcela_Enter);
             // 
-            // textBox1
+            // DtpDataVencimento
             // 
-            this.textBox1.Location = new System.Drawing.Point(123, 25);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 23);
-            this.textBox1.TabIndex = 18;
+            this.DtpDataVencimento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DtpDataVencimento.Location = new System.Drawing.Point(123, 54);
+            this.DtpDataVencimento.Name = "DtpDataVencimento";
+            this.DtpDataVencimento.Size = new System.Drawing.Size(100, 23);
+            this.DtpDataVencimento.TabIndex = 38;
+            // 
+            // txtValorParcela
+            // 
+            this.txtValorParcela.Location = new System.Drawing.Point(123, 25);
+            this.txtValorParcela.Name = "txtValorParcela";
+            this.txtValorParcela.Size = new System.Drawing.Size(100, 23);
+            this.txtValorParcela.TabIndex = 18;
+            this.txtValorParcela.TextChanged += new System.EventHandler(this.FormataTextoEmDinheiro);
             // 
             // lblValorParcela
             // 
@@ -424,6 +447,7 @@ namespace SistemaRegistros
             // 
             this.txtNomeRequerente.Location = new System.Drawing.Point(104, 39);
             this.txtNomeRequerente.Name = "txtNomeRequerente";
+            this.txtNomeRequerente.ReadOnly = true;
             this.txtNomeRequerente.Size = new System.Drawing.Size(192, 23);
             this.txtNomeRequerente.TabIndex = 1;
             // 
@@ -432,15 +456,16 @@ namespace SistemaRegistros
             this.lblCpfRquerente.AutoSize = true;
             this.lblCpfRquerente.Location = new System.Drawing.Point(321, 42);
             this.lblCpfRquerente.Name = "lblCpfRquerente";
-            this.lblCpfRquerente.Size = new System.Drawing.Size(36, 15);
+            this.lblCpfRquerente.Size = new System.Drawing.Size(31, 15);
             this.lblCpfRquerente.TabIndex = 2;
-            this.lblCpfRquerente.Text = "*CPF:";
+            this.lblCpfRquerente.Text = "CPF:";
             // 
             // mskCpf
             // 
             this.mskCpf.Location = new System.Drawing.Point(359, 39);
             this.mskCpf.Mask = "000\\.000\\.000-00";
             this.mskCpf.Name = "mskCpf";
+            this.mskCpf.ReadOnly = true;
             this.mskCpf.Size = new System.Drawing.Size(80, 23);
             this.mskCpf.TabIndex = 10;
             // 
@@ -458,46 +483,48 @@ namespace SistemaRegistros
             this.mskTelefone.Location = new System.Drawing.Point(104, 73);
             this.mskTelefone.Mask = "(99) 00000-0000";
             this.mskTelefone.Name = "mskTelefone";
+            this.mskTelefone.ReadOnly = true;
             this.mskTelefone.Size = new System.Drawing.Size(81, 23);
             this.mskTelefone.TabIndex = 12;
             // 
-            // dpRequerente
+            // gpRequerente
             // 
-            this.dpRequerente.Controls.Add(this.mskTelefone);
-            this.dpRequerente.Controls.Add(this.lbltelefone);
-            this.dpRequerente.Controls.Add(this.mskCpf);
-            this.dpRequerente.Controls.Add(this.lblCpfRquerente);
-            this.dpRequerente.Controls.Add(this.txtNomeRequerente);
-            this.dpRequerente.Controls.Add(this.lblNomeRequerente);
-            this.dpRequerente.Location = new System.Drawing.Point(18, 86);
-            this.dpRequerente.Name = "dpRequerente";
-            this.dpRequerente.Size = new System.Drawing.Size(543, 135);
-            this.dpRequerente.TabIndex = 27;
-            this.dpRequerente.TabStop = false;
-            this.dpRequerente.Text = "informações do Requerente:";
+            this.gpRequerente.Controls.Add(this.mskTelefone);
+            this.gpRequerente.Controls.Add(this.lbltelefone);
+            this.gpRequerente.Controls.Add(this.mskCpf);
+            this.gpRequerente.Controls.Add(this.lblCpfRquerente);
+            this.gpRequerente.Controls.Add(this.txtNomeRequerente);
+            this.gpRequerente.Controls.Add(this.lblNomeRequerente);
+            this.gpRequerente.Location = new System.Drawing.Point(18, 86);
+            this.gpRequerente.Name = "gpRequerente";
+            this.gpRequerente.Size = new System.Drawing.Size(543, 135);
+            this.gpRequerente.TabIndex = 27;
+            this.gpRequerente.TabStop = false;
+            this.gpRequerente.Text = "informações do Requerente:";
             // 
-            // gbCaptador
+            // gpCaptador
             // 
-            this.gbCaptador.Controls.Add(this.txtLocalDescobrimento);
-            this.gbCaptador.Controls.Add(this.lblLocalDescobrimento);
-            this.gbCaptador.Controls.Add(this.txtFoiIndicacao);
-            this.gbCaptador.Controls.Add(this.lblValorComissao);
-            this.gbCaptador.Controls.Add(this.txtValorComissao);
-            this.gbCaptador.Controls.Add(this.txtNomeCaptador);
-            this.gbCaptador.Controls.Add(this.lblNomeIndicacao);
-            this.gbCaptador.Controls.Add(this.lblFoiIndicacao);
-            this.gbCaptador.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.gbCaptador.Location = new System.Drawing.Point(18, 227);
-            this.gbCaptador.Name = "gbCaptador";
-            this.gbCaptador.Size = new System.Drawing.Size(543, 78);
-            this.gbCaptador.TabIndex = 32;
-            this.gbCaptador.TabStop = false;
-            this.gbCaptador.Text = "Informações de Captador";
+            this.gpCaptador.Controls.Add(this.txtLocalDescobrimento);
+            this.gpCaptador.Controls.Add(this.lblLocalDescobrimento);
+            this.gpCaptador.Controls.Add(this.txtFoiIndicacao);
+            this.gpCaptador.Controls.Add(this.lblValorComissao);
+            this.gpCaptador.Controls.Add(this.txtValorComissao);
+            this.gpCaptador.Controls.Add(this.txtNomeCaptador);
+            this.gpCaptador.Controls.Add(this.lblNomeIndicacao);
+            this.gpCaptador.Controls.Add(this.lblFoiIndicacao);
+            this.gpCaptador.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this.gpCaptador.Location = new System.Drawing.Point(18, 227);
+            this.gpCaptador.Name = "gpCaptador";
+            this.gpCaptador.Size = new System.Drawing.Size(543, 78);
+            this.gpCaptador.TabIndex = 32;
+            this.gpCaptador.TabStop = false;
+            this.gpCaptador.Text = "Informações de Captador";
             // 
             // txtLocalDescobrimento
             // 
             this.txtLocalDescobrimento.Location = new System.Drawing.Point(365, 16);
             this.txtLocalDescobrimento.Name = "txtLocalDescobrimento";
+            this.txtLocalDescobrimento.ReadOnly = true;
             this.txtLocalDescobrimento.Size = new System.Drawing.Size(100, 23);
             this.txtLocalDescobrimento.TabIndex = 41;
             // 
@@ -514,6 +541,7 @@ namespace SistemaRegistros
             // 
             this.txtFoiIndicacao.Location = new System.Drawing.Point(106, 21);
             this.txtFoiIndicacao.Name = "txtFoiIndicacao";
+            this.txtFoiIndicacao.ReadOnly = true;
             this.txtFoiIndicacao.Size = new System.Drawing.Size(58, 23);
             this.txtFoiIndicacao.TabIndex = 39;
             // 
@@ -522,9 +550,9 @@ namespace SistemaRegistros
             this.lblValorComissao.AutoSize = true;
             this.lblValorComissao.Location = new System.Drawing.Point(287, 48);
             this.lblValorComissao.Name = "lblValorComissao";
-            this.lblValorComissao.Size = new System.Drawing.Size(91, 15);
+            this.lblValorComissao.Size = new System.Drawing.Size(96, 15);
             this.lblValorComissao.TabIndex = 38;
-            this.lblValorComissao.Text = "Valor Comissão:";
+            this.lblValorComissao.Text = "*Valor Comissão:";
             // 
             // txtValorComissao
             // 
@@ -532,11 +560,13 @@ namespace SistemaRegistros
             this.txtValorComissao.Name = "txtValorComissao";
             this.txtValorComissao.Size = new System.Drawing.Size(81, 23);
             this.txtValorComissao.TabIndex = 37;
+            this.txtValorComissao.TextChanged += new System.EventHandler(this.FormataTextoEmDinheiro);
             // 
             // txtNomeCaptador
             // 
             this.txtNomeCaptador.Location = new System.Drawing.Point(106, 45);
             this.txtNomeCaptador.Name = "txtNomeCaptador";
+            this.txtNomeCaptador.ReadOnly = true;
             this.txtNomeCaptador.Size = new System.Drawing.Size(153, 23);
             this.txtNomeCaptador.TabIndex = 36;
             // 
@@ -558,33 +588,42 @@ namespace SistemaRegistros
             this.lblFoiIndicacao.TabIndex = 33;
             this.lblFoiIndicacao.Text = "Foi indicação:";
             // 
-            // label1
+            // lblObsParcela
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 15);
-            this.label1.TabIndex = 33;
-            this.label1.Text = "label1";
+            this.lblObsParcela.AutoSize = true;
+            this.lblObsParcela.Location = new System.Drawing.Point(323, 617);
+            this.lblObsParcela.Name = "lblObsParcela";
+            this.lblObsParcela.Size = new System.Drawing.Size(134, 15);
+            this.lblObsParcela.TabIndex = 34;
+            this.lblObsParcela.Text = "Observações da Parcela:";
+            // 
+            // RtxtObsParcela
+            // 
+            this.RtxtObsParcela.Location = new System.Drawing.Point(326, 635);
+            this.RtxtObsParcela.Name = "RtxtObsParcela";
+            this.RtxtObsParcela.Size = new System.Drawing.Size(235, 108);
+            this.RtxtObsParcela.TabIndex = 33;
+            this.RtxtObsParcela.Text = "";
             // 
             // FrmContrato
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(605, 907);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.gbCaptador);
+            this.Controls.Add(this.lblObsParcela);
+            this.Controls.Add(this.RtxtObsParcela);
+            this.Controls.Add(this.gpCaptador);
             this.Controls.Add(this.gpParcela);
             this.Controls.Add(this.btnSalva);
             this.Controls.Add(this.btnRemoveLinha);
             this.Controls.Add(this.btnAdicionaLinha);
             this.Controls.Add(this.mskNumProcesso);
-            this.Controls.Add(this.dpRequerente);
+            this.Controls.Add(this.gpRequerente);
             this.Controls.Add(this.btnCadastraCobranca);
             this.Controls.Add(this.gpCobranca);
             this.Controls.Add(this.lblNProcesso);
-            this.Controls.Add(this.lblObs);
-            this.Controls.Add(this.RtxtObs);
+            this.Controls.Add(this.lblObsContrato);
+            this.Controls.Add(this.RtxtObsContrato);
             this.Controls.Add(this.lblParcelas);
             this.Controls.Add(this.dgvParcelas);
             this.Name = "FrmContrato";
@@ -596,10 +635,10 @@ namespace SistemaRegistros
             this.gpCobranca.PerformLayout();
             this.gpParcela.ResumeLayout(false);
             this.gpParcela.PerformLayout();
-            this.dpRequerente.ResumeLayout(false);
-            this.dpRequerente.PerformLayout();
-            this.gbCaptador.ResumeLayout(false);
-            this.gbCaptador.PerformLayout();
+            this.gpRequerente.ResumeLayout(false);
+            this.gpRequerente.PerformLayout();
+            this.gpCaptador.ResumeLayout(false);
+            this.gpCaptador.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -609,8 +648,8 @@ namespace SistemaRegistros
 
         private System.Windows.Forms.DataGridView dgvParcelas;
         private System.Windows.Forms.Label lblParcelas;
-        private System.Windows.Forms.RichTextBox RtxtObs;
-        private System.Windows.Forms.Label lblObs;
+        private System.Windows.Forms.RichTextBox RtxtObsContrato;
+        private System.Windows.Forms.Label lblObsContrato;
         private System.Windows.Forms.Label lblNProcesso;
         private System.Windows.Forms.GroupBox gpCobranca;
         private System.Windows.Forms.Label lbltipopagamento;
@@ -623,11 +662,10 @@ namespace SistemaRegistros
         private System.Windows.Forms.MaskedTextBox mskNumProcesso;
         private System.Windows.Forms.ComboBox cbTipoDePagamento;
         private System.Windows.Forms.Label lblValorAParcelar;
-        private System.Windows.Forms.TextBox txtValor;
+        private System.Windows.Forms.TextBox txtValorDasParcelas;
         private System.Windows.Forms.Button btnAdicionaLinha;
         private System.Windows.Forms.Button btnRemoveLinha;
         private System.Windows.Forms.Button btnSalva;
-        private System.Windows.Forms.MaskedTextBox mskDataVencimento;
         private System.Windows.Forms.TextBox txtDiaDeVencimento;
         private System.Windows.Forms.Label lblDiaVencimento;
         private System.Windows.Forms.TextBox txtValorEntrada;
@@ -635,7 +673,7 @@ namespace SistemaRegistros
         private System.Windows.Forms.TextBox txtValorTotal;
         private System.Windows.Forms.Label lblValorTotal;
         private System.Windows.Forms.GroupBox gpParcela;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtValorParcela;
         private System.Windows.Forms.Label lblValorParcela;
         private System.Windows.Forms.Label lblNomeRequerente;
         private System.Windows.Forms.TextBox txtNomeRequerente;
@@ -643,18 +681,21 @@ namespace SistemaRegistros
         private System.Windows.Forms.MaskedTextBox mskCpf;
         private System.Windows.Forms.Label lbltelefone;
         private System.Windows.Forms.MaskedTextBox mskTelefone;
-        private System.Windows.Forms.GroupBox dpRequerente;
-        private System.Windows.Forms.GroupBox gbCaptador;
+        private System.Windows.Forms.GroupBox gpRequerente;
+        private System.Windows.Forms.GroupBox gpCaptador;
         private System.Windows.Forms.Label lblValorComissao;
         private System.Windows.Forms.TextBox txtValorComissao;
         private System.Windows.Forms.TextBox txtNomeCaptador;
         private System.Windows.Forms.Label lblNomeIndicacao;
         private System.Windows.Forms.Label lblFoiIndicacao;
         private System.Windows.Forms.Label lblDataContrato;
-        private System.Windows.Forms.MaskedTextBox mskDataContrato;
         private System.Windows.Forms.TextBox txtFoiIndicacao;
         private System.Windows.Forms.Label lblLocalDescobrimento;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtLocalDescobrimento;
+        private System.Windows.Forms.Label lblObsParcela;
+        private System.Windows.Forms.RichTextBox RtxtObsParcela;
+        private System.Windows.Forms.Label lblTotalJaPago;
+        private System.Windows.Forms.DateTimePicker dtpDataContrato;
+        private System.Windows.Forms.DateTimePicker DtpDataVencimento;
     }
 }
