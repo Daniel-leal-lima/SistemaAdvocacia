@@ -251,7 +251,8 @@ namespace SistemaRegistros
                 }
                 else
                 {
-                    MessageBox.Show("VERIFIQUE SE INSERIU OS DADOS CORRETAMENTE", "MENSAGEM", MessageBoxIcon.Error);
+                    MessageBox.Show("VERIFIQUE SE INSERIU OS DADOS CORRETAMENTE", "MENSAGEM",
+                        MessageBoxButtons.OK,MessageBoxIcon.Error);
                 }
             }
             catch (Exception err)

@@ -35,6 +35,26 @@ namespace SistemaRegistros.classes
             con.FechaConexao();
         }
 
+        public void ListaCaptadores(ComboBox cbNomeCaptadores)
+        {
+            FabricaConexao con = new FabricaConexao();
+            con.AbreConexao();
+            SqlCommand cmd = new SqlCommand("spListaNomesCaptadores", con.GetConexao());
+            cmd.CommandType = CommandType.StoredProcedure;
+            using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+            {
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                if (dt.Rows.Count > 0)
+                {
+                    cbNomeCaptadores.DataSource = dt;
+                    cbNomeCaptadores.DisplayMember = "ItemName";
+                    cbNomeCaptadores.ValueMember = "NomeCaptador";
+                }
+            }
+            con.FechaConexao();
+        }
+
         public bool LoginExiste(Usuaria usuaria)
         {
             FabricaConexao con = new FabricaConexao();

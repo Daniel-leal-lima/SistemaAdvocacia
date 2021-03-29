@@ -1,5 +1,5 @@
 USE master
-
+GO
 DROP DATABASE IF EXISTS BDAdvocacia
 GO
 
@@ -569,7 +569,7 @@ BEGIN
 		end
 END
 GO
-select * from TbParcela
+
 CREATE PROC spGetContrato
 @IdContrato INT
 AS
@@ -722,3 +722,35 @@ BEGIN
 END
 GO
 
+
+----------------------------------------------------------------------- INSERE PELO MENOS UM REGISTRO PARA FAZER LOGIN
+EXEC spCadastraUsuaria @Nome='Admin', @Senha='123',@TipoAcesso='A'
+GO
+
+------------------------------------------------------------------------- RELATORIO
+CREATE PROC spPesquisaRelatorio
+@NomeCaptador VARCHAR(90),
+@Mes VARCHAR(2),
+@Ano VARCHAR(4)
+AS
+BEGIN
+	SELECT Cliente.Nome,
+	Processo.NomeCaptador,
+	Contrato.ValorComissao
+	FROM TbContrato Contrato 
+	INNER JOIN TbProcesso Processo
+		ON Processo.IdProcesso = Contrato.IdProcesso
+	INNER JOIN TbCliente Cliente
+		ON Processo.IdCliente = Cliente.IdCliente
+	WHERE MONTH(DataContrato)= @Mes and YEAR(DataContrato)=@Ano
+		AND Processo.NomeCaptador = @NomeCaptador
+END
+GO
+
+CREATE PROC spListaNomesCaptadores
+AS
+BEGIN
+	SELECT Distinct(NomeCaptador) 
+	FROM TbProcesso
+END
+GO

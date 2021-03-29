@@ -22,5 +22,8 @@
     <Compile Update="FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FrmRelatorio.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>
