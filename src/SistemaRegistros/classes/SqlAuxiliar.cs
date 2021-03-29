@@ -35,6 +35,27 @@ namespace SistemaRegistros.classes
             con.FechaConexao();
         }
 
+        public void GeraRelatorio(string nomeCaptador, string mes, string ano)
+        {
+            FabricaConexao con = new FabricaConexao();
+            con.AbreConexao();
+            SqlCommand cmd = new SqlCommand("spPesquisaRelatorio", con.GetConexao());
+            cmd.Parameters.AddWithValue("@NomeCaptador", nomeCaptador);
+            cmd.Parameters.AddWithValue("@Mes", mes);
+            cmd.Parameters.AddWithValue("@Ano", ano);
+            cmd.CommandType = CommandType.StoredProcedure;
+            using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+            {
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                if (dt.Rows.Count > 0)
+                {
+                    //Gera Relatorio
+                }
+            }
+            con.FechaConexao();
+        }
+
         public void ListaCaptadores(ComboBox cbNomeCaptadores)
         {
             FabricaConexao con = new FabricaConexao();
@@ -48,7 +69,7 @@ namespace SistemaRegistros.classes
                 if (dt.Rows.Count > 0)
                 {
                     cbNomeCaptadores.DataSource = dt;
-                    cbNomeCaptadores.DisplayMember = "ItemName";
+                    cbNomeCaptadores.DisplayMember = "NomeItem";
                     cbNomeCaptadores.ValueMember = "NomeCaptador";
                 }
             }

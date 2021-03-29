@@ -31,6 +31,9 @@ namespace SistemaRegistros
         {
             this.cbNomeCaptadores = new System.Windows.Forms.ComboBox();
             this.lblCaptadores = new System.Windows.Forms.Label();
+            this.btnGeraRelatorio = new System.Windows.Forms.Button();
+            this.DtpData = new System.Windows.Forms.DateTimePicker();
+            this.lblMesEAno = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // cbNomeCaptadores
@@ -50,11 +53,42 @@ namespace SistemaRegistros
             this.lblCaptadores.TabIndex = 1;
             this.lblCaptadores.Text = "Captadores:";
             // 
+            // btnGeraRelatorio
+            // 
+            this.btnGeraRelatorio.Location = new System.Drawing.Point(410, 27);
+            this.btnGeraRelatorio.Name = "btnGeraRelatorio";
+            this.btnGeraRelatorio.Size = new System.Drawing.Size(94, 45);
+            this.btnGeraRelatorio.TabIndex = 2;
+            this.btnGeraRelatorio.Text = "Gerar Relatorio";
+            this.btnGeraRelatorio.UseVisualStyleBackColor = true;
+            this.btnGeraRelatorio.Click += new System.EventHandler(this.btnGeraRelatorio_Click);
+            // 
+            // DtpData
+            // 
+            this.DtpData.CustomFormat = "MM/yyyy";
+            this.DtpData.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.DtpData.Location = new System.Drawing.Point(121, 69);
+            this.DtpData.Name = "DtpData";
+            this.DtpData.Size = new System.Drawing.Size(70, 23);
+            this.DtpData.TabIndex = 3;
+            // 
+            // lblMesEAno
+            // 
+            this.lblMesEAno.AutoSize = true;
+            this.lblMesEAno.Location = new System.Drawing.Point(81, 75);
+            this.lblMesEAno.Name = "lblMesEAno";
+            this.lblMesEAno.Size = new System.Drawing.Size(34, 15);
+            this.lblMesEAno.TabIndex = 4;
+            this.lblMesEAno.Text = "Data:";
+            // 
             // FrmRelatorio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblMesEAno);
+            this.Controls.Add(this.DtpData);
+            this.Controls.Add(this.btnGeraRelatorio);
             this.Controls.Add(this.lblCaptadores);
             this.Controls.Add(this.cbNomeCaptadores);
             this.Name = "FrmRelatorio";
@@ -69,5 +103,8 @@ namespace SistemaRegistros
 
         private System.Windows.Forms.ComboBox cbNomeCaptadores;
         private System.Windows.Forms.Label lblCaptadores;
+        private System.Windows.Forms.Button btnGeraRelatorio;
+        private System.Windows.Forms.DateTimePicker DtpData;
+        private System.Windows.Forms.Label lblMesEAno;
     }
 }

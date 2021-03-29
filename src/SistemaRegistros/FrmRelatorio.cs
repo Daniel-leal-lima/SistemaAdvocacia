@@ -21,5 +21,13 @@ namespace SistemaRegistros
             SqlAuxiliar sqlAux = new SqlAuxiliar();
             sqlAux.ListaCaptadores(cbNomeCaptadores);
         }
+
+        private void btnGeraRelatorio_Click(object sender, EventArgs e)
+        {
+            DtpData.Value.ToString("MM");
+            DtpData.Value.ToString("yyyy");
+            SqlAuxiliar sqlAux = new SqlAuxiliar();
+            sqlAux.GeraRelatorio()
+        }
     }
 }
