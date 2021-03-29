@@ -67,7 +67,7 @@ namespace SistemaRegistros
             // 
             this.DtpData.CustomFormat = "MM/yyyy";
             this.DtpData.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DtpData.Location = new System.Drawing.Point(121, 69);
+            this.DtpData.Location = new System.Drawing.Point(119, 88);
             this.DtpData.Name = "DtpData";
             this.DtpData.Size = new System.Drawing.Size(70, 23);
             this.DtpData.TabIndex = 3;
@@ -75,23 +75,24 @@ namespace SistemaRegistros
             // lblMesEAno
             // 
             this.lblMesEAno.AutoSize = true;
-            this.lblMesEAno.Location = new System.Drawing.Point(81, 75);
+            this.lblMesEAno.Location = new System.Drawing.Point(82, 91);
             this.lblMesEAno.Name = "lblMesEAno";
-            this.lblMesEAno.Size = new System.Drawing.Size(34, 15);
+            this.lblMesEAno.Size = new System.Drawing.Size(32, 15);
             this.lblMesEAno.TabIndex = 4;
-            this.lblMesEAno.Text = "Data:";
+            this.lblMesEAno.Text = "Mês:";
             // 
             // FrmRelatorio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(556, 123);
             this.Controls.Add(this.lblMesEAno);
             this.Controls.Add(this.DtpData);
             this.Controls.Add(this.btnGeraRelatorio);
             this.Controls.Add(this.lblCaptadores);
             this.Controls.Add(this.cbNomeCaptadores);
             this.Name = "FrmRelatorio";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmRelatorio";
             this.Load += new System.EventHandler(this.FrmRelatorio_Load);
             this.ResumeLayout(false);

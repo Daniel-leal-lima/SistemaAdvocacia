@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
@@ -24,10 +25,11 @@ namespace SistemaRegistros
 
         private void btnGeraRelatorio_Click(object sender, EventArgs e)
         {
-            DtpData.Value.ToString("MM");
-            DtpData.Value.ToString("yyyy");
+            string nomeCaptador = cbNomeCaptadores.Text;
+            string mes = DtpData.Value.ToString("MM");
+            string ano = DtpData.Value.ToString("yyyy");
             SqlAuxiliar sqlAux = new SqlAuxiliar();
-            sqlAux.GeraRelatorio()
+            sqlAux.GeraRelatorio(nomeCaptador,mes, ano);
         }
     }
 }

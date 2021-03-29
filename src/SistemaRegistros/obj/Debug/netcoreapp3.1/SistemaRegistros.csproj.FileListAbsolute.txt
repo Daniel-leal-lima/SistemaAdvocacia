@@ -81,5 +81,8 @@ C:\Users\Intel\Desktop\SistemaAdvocacia-master\src\SistemaRegistros\bin\Debug\ne
 C:\Users\Intel\Desktop\SistemaAdvocacia-master\src\SistemaRegistros\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\Intel\Desktop\SistemaAdvocacia-master\src\SistemaRegistros\obj\Debug\netcoreapp3.1\SistemaRegistros.csproj.CopyComplete
 C:\Users\Intel\Desktop\SistemaAdvocacia-master\src\SistemaRegistros\obj\Debug\netcoreapp3.1\SistemaRegistros.genruntimeconfig.cache
-C:\Users\Intel\Desktop\SistemaAdvocacia-master\src\SistemaRegistros\obj\Debug\netcoreapp3.1\SistemaRegistros.csprojAssemblyReference.cache
 C:\Users\Intel\Desktop\SistemaAdvocacia-master\src\SistemaRegistros\obj\Debug\netcoreapp3.1\SistemaRegistros.FrmRelatorio.resources
+C:\Users\Intel\Desktop\SistemaAdvocacia-master\src\SistemaRegistros\bin\Debug\netcoreapp3.1\ClosedXML.dll
+C:\Users\Intel\Desktop\SistemaAdvocacia-master\src\SistemaRegistros\bin\Debug\netcoreapp3.1\DocumentFormat.OpenXml.dll
+C:\Users\Intel\Desktop\SistemaAdvocacia-master\src\SistemaRegistros\bin\Debug\netcoreapp3.1\ExcelNumberFormat.dll
+C:\Users\Intel\Desktop\SistemaAdvocacia-master\src\SistemaRegistros\bin\Debug\netcoreapp3.1\WhatsAppApi.dll

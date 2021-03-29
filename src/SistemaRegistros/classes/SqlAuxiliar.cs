@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClosedXML.Excel;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -50,7 +51,27 @@ namespace SistemaRegistros.classes
                 sda.Fill(dt);
                 if (dt.Rows.Count > 0)
                 {
-                    //Gera Relatorio
+                    //GERA RELATORIO
+                    using (SaveFileDialog sfd = new SaveFileDialog() {Filter="ARQUIVO EXCEL|*.xlsx" })
+                    {
+                        if (sfd.ShowDialog() == DialogResult.OK)
+                        {
+                            try
+                            {
+                                using (XLWorkbook workbook = new XLWorkbook())
+                                {
+                                    workbook.Worksheets.Add(dt, "TESTE");
+                                    workbook.SaveAs(sfd.FileName);
+                                }
+                                MessageBox.Show("ARQUIVO EXPORTADO COM SUCESSO!");
+                            }
+                            catch (Exception err)
+                            {
+
+                                MessageBox.Show(err.Message);
+                            }
+                        }
+                    }
                 }
             }
             con.FechaConexao();

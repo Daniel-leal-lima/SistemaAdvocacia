@@ -734,9 +734,9 @@ CREATE PROC spPesquisaRelatorio
 @Ano VARCHAR(4)
 AS
 BEGIN
-	SELECT Cliente.Nome,
-	Processo.NomeCaptador,
-	Contrato.ValorComissao
+	SELECT Cliente.Nome as 'Cliente',
+	Processo.NomeCaptador as 'Nome do(a) Captador(a)',
+	FORMAT (Contrato.ValorComissao,'C') as 'Valor da comissão'
 	FROM TbContrato Contrato 
 	INNER JOIN TbProcesso Processo
 		ON Processo.IdProcesso = Contrato.IdProcesso

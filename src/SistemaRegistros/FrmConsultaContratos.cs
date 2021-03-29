@@ -133,5 +133,11 @@ namespace SistemaRegistros
             //cbFiltros.SelectedIndex = 0;
             //RefreshDgv();
         }
+
+        private void btnRelatorio_Click(object sender, EventArgs e)
+        {
+            FrmRelatorio frmRelatorio = new FrmRelatorio();
+            frmRelatorio.ShowDialog();
+        }
     }
 }

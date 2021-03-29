@@ -39,6 +39,7 @@ namespace SistemaRegistros
             this.btnRefresh = new System.Windows.Forms.Button();
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnVoltar = new System.Windows.Forms.Button();
+            this.btnRelatorio = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvContratos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -121,7 +122,7 @@ namespace SistemaRegistros
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Location = new System.Drawing.Point(536, 214);
+            this.btnRefresh.Location = new System.Drawing.Point(534, 194);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(63, 56);
             this.btnRefresh.TabIndex = 15;
@@ -149,11 +150,22 @@ namespace SistemaRegistros
             this.btnVoltar.UseVisualStyleBackColor = true;
             this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
             // 
+            // btnRelatorio
+            // 
+            this.btnRelatorio.Location = new System.Drawing.Point(534, 272);
+            this.btnRelatorio.Name = "btnRelatorio";
+            this.btnRelatorio.Size = new System.Drawing.Size(65, 72);
+            this.btnRelatorio.TabIndex = 18;
+            this.btnRelatorio.Text = "Relatorio Captação";
+            this.btnRelatorio.UseVisualStyleBackColor = true;
+            this.btnRelatorio.Click += new System.EventHandler(this.btnRelatorio_Click);
+            // 
             // FrmConsultaContratos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(611, 523);
+            this.Controls.Add(this.btnRelatorio);
             this.Controls.Add(this.btnVoltar);
             this.Controls.Add(this.btnAlterar);
             this.Controls.Add(this.btnRefresh);
@@ -187,5 +199,6 @@ namespace SistemaRegistros
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Button btnAlterar;
         private System.Windows.Forms.Button btnVoltar;
+        private System.Windows.Forms.Button btnRelatorio;
     }
 }

@@ -348,11 +348,15 @@ namespace SistemaRegistros
             ComboBox cb = (ComboBox)sender;
             if ((cb.SelectedIndex == 0) || (cb.SelectedIndex == 1))
             {
+                lblValorAParcelar.Visible = true;
+                txtValorDasParcelas.Visible = true;
                 lblDividido.Enabled = true;
                 cbDividoEm.Enabled = true;
                 cbDividoEm.SelectedIndex = 0;
             }
             else {
+                lblValorAParcelar.Visible = false;
+                txtValorDasParcelas.Visible = false;
                 lblDividido.Enabled = false;
                 cbDividoEm.Text = "1";
                 cbDividoEm.Enabled = false;
