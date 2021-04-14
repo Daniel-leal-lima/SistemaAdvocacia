@@ -8,7 +8,7 @@ namespace SistemaRegistros
 {
     class FabricaConexao
     {
-        private string cs = "Data Source=INTEL\\;Initial Catalog=BDAdvocacia;User Id=sa;Password=12345678;MultipleActiveResultSets=true;";
+        private string cs = "Data Source=DESKTOP-7CTC8RU\\;Initial Catalog=BDAdvocacia;User Id=sa;Password=12345678;MultipleActiveResultSets=true;";
         private SqlConnection con = null;
         private string erro = string.Empty;
 

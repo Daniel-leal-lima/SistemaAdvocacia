@@ -99,40 +99,43 @@ namespace SistemaRegistros.classes
 
         public bool LoginExiste(Usuaria usuaria)
         {
-            FabricaConexao con = new FabricaConexao();
-            con.AbreConexao();
-            SqlCommand cmd = new SqlCommand("spGetUsuario ", con.GetConexao());
-            cmd.Parameters.AddWithValue("@Nome", usuaria.NomeUsuaria);
-            cmd.Parameters.AddWithValue("@Senha", usuaria.Senha);
-            cmd.CommandType = CommandType.StoredProcedure;
-            using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
-            {
-                DataTable dt = new DataTable();
-                sda.Fill(dt);
-                if (dt.Rows.Count > 0)
-                { 
-                    return true; }
-                else
+                FabricaConexao con = new FabricaConexao();
+                con.AbreConexao();
+                SqlCommand cmd = new SqlCommand("spGetUsuario ", con.GetConexao());
+                cmd.Parameters.AddWithValue("@Nome", usuaria.NomeUsuaria);
+                cmd.Parameters.AddWithValue("@Senha", usuaria.Senha);
+                cmd.CommandType = CommandType.StoredProcedure;
+                using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
                 {
-                    return false;
+                    DataTable dt = new DataTable();
+                    sda.Fill(dt);
+                    if (dt.Rows.Count > 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 }
-            }
-            con.FechaConexao();
+                con.FechaConexao();
+            
         }
         public bool LoginConfere(Usuaria usuaria)
         {
-            FabricaConexao con = new FabricaConexao();
-            con.AbreConexao();
-            SqlCommand cmd = new SqlCommand("spGetUsuario ", con.GetConexao());
-            cmd.Parameters.AddWithValue("@Nome", usuaria.NomeUsuaria);
-            cmd.Parameters.AddWithValue("@Senha", usuaria.Senha);
-            cmd.CommandType = CommandType.StoredProcedure;
-            using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
-            {
-                DataTable dt = new DataTable();
-                sda.Fill(dt);
+                FabricaConexao con = new FabricaConexao();
+                con.AbreConexao();
+                SqlCommand cmd = new SqlCommand("spGetUsuario ", con.GetConexao());
+                cmd.Parameters.AddWithValue("@Nome", usuaria.NomeUsuaria);
+                cmd.Parameters.AddWithValue("@Senha", usuaria.Senha);
+                cmd.CommandType = CommandType.StoredProcedure;
+                using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+                {
+                    DataTable dt = new DataTable();
+                    sda.Fill(dt);
                     if (usuaria.NomeUsuaria.Equals(dt.Rows[0][1].ToString())
-                        && usuaria.Senha.Equals(dt.Rows[0][2].ToString())) {
+                        && usuaria.Senha.Equals(dt.Rows[0][2].ToString()))
+                    {
                         usuaria.Idusuaria = int.Parse(dt.Rows[0][0].ToString());
                         usuaria.NomeUsuaria = dt.Rows[0][1].ToString();
                         usuaria.TipoAcessoUsuaria = dt.Rows[0][3].ToString();
@@ -142,8 +145,8 @@ namespace SistemaRegistros.classes
                     {
                         return false;
                     }
-            }
-            con.FechaConexao();
+                }
+                con.FechaConexao();
         }
 
 

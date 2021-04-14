@@ -21,29 +21,35 @@ namespace SistemaRegistros
             SqlAuxiliar sqlAux = new SqlAuxiliar();
             Usuaria usuaria = new Usuaria(txtNomeUsuaria.Text, txtSenha.Text);
 
-
-            if(sqlAux.LoginExiste(usuaria))
-            {
-                ValidaLogin(usuaria);
-            }
-            else
-            {
-                MessageBox.Show("USUARIA NÃO CADASTRADA NO SISTEMA!");
-            }
+                if (sqlAux.LoginExiste(usuaria))
+                {
+                    ValidaLogin(usuaria);
+                }
+                else
+                {
+                    MessageBox.Show("USUARIA NÃO CADASTRADA NO SISTEMA!");
+                }
         }
         public void ValidaLogin(Usuaria usuaria)
         {
-            SqlAuxiliar sqlAux = new SqlAuxiliar();
-            if (sqlAux.LoginConfere(usuaria))
+            try
             {
-                FrmConsultaClientes frmConsultaClientes = new FrmConsultaClientes(usuaria);
-                this.Hide();
-                frmConsultaClientes.Show();
-                frmConsultaClientes.FormClosed+= new FormClosedEventHandler(fechaForm);
+                SqlAuxiliar sqlAux = new SqlAuxiliar();
+                if (sqlAux.LoginConfere(usuaria))
+                {
+                    FrmConsultaClientes frmConsultaClientes = new FrmConsultaClientes(usuaria);
+                    this.Hide();
+                    frmConsultaClientes.Show();
+                    frmConsultaClientes.FormClosed += new FormClosedEventHandler(fechaForm);
+                }
+                else
+                {
+                    MessageBox.Show("DADOS NAO CONFEREM!");
+                }
             }
-            else
+            catch(Exception err)
             {
-                MessageBox.Show("DADOS NAO CONFEREM!");
+                MessageBox.Show(err.Message);
             }
         }
         private void FrmLogin_Load(object sender, EventArgs e)
