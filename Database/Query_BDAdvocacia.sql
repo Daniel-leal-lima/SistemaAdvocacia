@@ -723,8 +723,10 @@ END
 GO
 
 
------------------------------------------------------------------------ INSERE PELO MENOS UM REGISTRO PARA FAZER LOGIN
-EXEC spCadastraUsuaria @Nome='Admin', @Senha='123',@TipoAcesso='A'
+----------------------------------------------------------------------- INSERE REGISTROS PARA FAZER LOGIN
+EXEC spCadastraUsuaria @Nome='Admin', @Senha='12456',@TipoAcesso='A'
+GO
+EXEC spCadastraUsuaria @Nome='Sec', @Senha='123',@TipoAcesso='A'
 GO
 
 ------------------------------------------------------------------------- RELATORIO

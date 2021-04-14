@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mR9QQb0N2KLvME/f3sV0xQ8o1xqGdAx0zjIlJh51ilep6Z044oiJ6syqE5d6eaSHECqTu9f7f85zuo7oeEXjtA==",
+  "dgSpecHash": "LDeJEEXEDGh3flgt0ar5MsiEgZs4xMC4qor2icf5xQEyfI1mm7sFCG//7Ptj8nHXvN5R6o2ms/A5D9b8Ww/3zw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Intel\\Desktop\\SistemaAdvocacia-master\\src\\SistemaRegistros\\SistemaRegistros.csproj",
+  "projectFilePath": "C:\\Users\\Intel\\Desktop\\SistemaAdvocacia\\src\\SistemaRegistros\\SistemaRegistros.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Intel\\.nuget\\packages\\closedxml\\0.95.4\\closedxml.0.95.4.nupkg.sha512",
     "C:\\Users\\Intel\\.nuget\\packages\\documentformat.openxml\\2.7.2\\documentformat.openxml.2.7.2.nupkg.sha512",
