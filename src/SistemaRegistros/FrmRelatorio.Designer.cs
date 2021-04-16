@@ -91,6 +91,7 @@ namespace SistemaRegistros
             this.Controls.Add(this.btnGeraRelatorio);
             this.Controls.Add(this.lblCaptadores);
             this.Controls.Add(this.cbNomeCaptadores);
+            this.MaximizeBox = false;
             this.Name = "FrmRelatorio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmRelatorio";

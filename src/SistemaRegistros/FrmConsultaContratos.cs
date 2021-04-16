@@ -32,15 +32,22 @@ namespace SistemaRegistros
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
-            int idCliente = int.Parse(dgvContratos.CurrentRow.Cells[0].Value.ToString());
-            int idProcesso = int.Parse(dgvContratos.CurrentRow.Cells[1].Value.ToString());
+            try
+            {
+                int idCliente = int.Parse(dgvContratos.CurrentRow.Cells[0].Value.ToString());
+                int idProcesso = int.Parse(dgvContratos.CurrentRow.Cells[1].Value.ToString());
 
-            Cliente cliente = new Cliente(idCliente);
-            Processo processo = new Processo(idProcesso);
-            FrmContrato frmCadastraContrato = new FrmContrato(cliente,processo);
+                Cliente cliente = new Cliente(idCliente);
+                Processo processo = new Processo(idProcesso);
+                FrmContrato frmCadastraContrato = new FrmContrato(cliente, processo);
 
-            frmCadastraContrato.Text = "Cadastra Contrato";
-            frmCadastraContrato.ShowDialog();
+                frmCadastraContrato.Text = "Cadastra Contrato";
+                frmCadastraContrato.ShowDialog();
+            }
+            catch (Exception Err)
+            {
+                MessageBox.Show("SELECIONE UM REGISTRO PRIMEIRO!", "Erro", MessageBoxButtons.OK);
+            }
         }
 
         private void FrmConsultaContratos_Load(object sender, EventArgs e)
@@ -87,32 +94,46 @@ namespace SistemaRegistros
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
-            int idCliente = int.Parse(dgvContratos.CurrentRow.Cells[0].Value.ToString());
-            int idProcesso = int.Parse(dgvContratos.CurrentRow.Cells[1].Value.ToString());
-            int idContrato = int.Parse(dgvContratos.CurrentRow.Cells[2].Value.ToString());
+            try
+            {
+                int idCliente = int.Parse(dgvContratos.CurrentRow.Cells[0].Value.ToString());
+                int idProcesso = int.Parse(dgvContratos.CurrentRow.Cells[1].Value.ToString());
+                int idContrato = int.Parse(dgvContratos.CurrentRow.Cells[2].Value.ToString());
 
-            Cliente cliente = new Cliente(idCliente);
-            Processo processo = new Processo(idProcesso);
-            Contrato contrato = new Contrato(idContrato);
-            FrmContrato frmAlteraContrato = new FrmContrato(cliente, processo,
-                contrato,'A');
-            frmAlteraContrato.Text = "Altera Contrato";
-            frmAlteraContrato.ShowDialog();
+                Cliente cliente = new Cliente(idCliente);
+                Processo processo = new Processo(idProcesso);
+                Contrato contrato = new Contrato(idContrato);
+                FrmContrato frmAlteraContrato = new FrmContrato(cliente, processo,
+                    contrato, 'A');
+                frmAlteraContrato.Text = "Altera Contrato";
+                frmAlteraContrato.ShowDialog();
+            }
+            catch (Exception Err)
+            {
+                MessageBox.Show("SELECIONE UM REGISTRO PRIMEIRO!", "Erro", MessageBoxButtons.OK);
+            }
         }
 
         private void btnVer_Click(object sender, EventArgs e)
         {
-            int idCliente = int.Parse(dgvContratos.CurrentRow.Cells[0].Value.ToString());
-            int idProcesso = int.Parse(dgvContratos.CurrentRow.Cells[1].Value.ToString());
-            int idContrato = int.Parse(dgvContratos.CurrentRow.Cells[2].Value.ToString());
+            try
+            {
+                int idCliente = int.Parse(dgvContratos.CurrentRow.Cells[0].Value.ToString());
+                int idProcesso = int.Parse(dgvContratos.CurrentRow.Cells[1].Value.ToString());
+                int idContrato = int.Parse(dgvContratos.CurrentRow.Cells[2].Value.ToString());
 
-            Cliente cliente = new Cliente(idCliente);
-            Processo processo = new Processo(idProcesso);
-            Contrato contrato = new Contrato(idContrato);
-            FrmContrato frmVisualizaContrato = new FrmContrato(cliente, processo,
-                contrato,'C');
-            frmVisualizaContrato.Text = "Consulta Contrato";
-            frmVisualizaContrato.ShowDialog();
+                Cliente cliente = new Cliente(idCliente);
+                Processo processo = new Processo(idProcesso);
+                Contrato contrato = new Contrato(idContrato);
+                FrmContrato frmVisualizaContrato = new FrmContrato(cliente, processo,
+                    contrato, 'C');
+                frmVisualizaContrato.Text = "Consulta Contrato";
+                frmVisualizaContrato.ShowDialog();
+            }
+            catch (Exception Err)
+            {
+                MessageBox.Show("SELECIONE UM REGISTRO PRIMEIRO!", "Erro", MessageBoxButtons.OK);
+            }
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)

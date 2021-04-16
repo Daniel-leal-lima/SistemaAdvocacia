@@ -49,19 +49,25 @@ namespace SistemaRegistros
         {
             //MessageBox.Show(dgvClientes.CurrentRow.Cells[0].Value.ToString()); -- LOG PRA VER SE ESTÁ PEGANDO OS VALORES DA CÉLULA
             //Retorna valores do Id's Cliente, ParteContraria e Processo
+            try
+            {
+                int idCliente = int.Parse(dgvClientes.CurrentRow.Cells[0].Value.ToString());
+                int idParteContraria = int.Parse(dgvClientes.CurrentRow.Cells[1].Value.ToString());
+                int idProcesso = int.Parse(dgvClientes.CurrentRow.Cells[2].Value.ToString());
 
-            int idCliente = int.Parse(dgvClientes.CurrentRow.Cells[0].Value.ToString());
-            int idParteContraria = int.Parse(dgvClientes.CurrentRow.Cells[1].Value.ToString());
-            int idProcesso = int.Parse(dgvClientes.CurrentRow.Cells[2].Value.ToString());
+                Cliente cliente = new Cliente(idCliente);
+                ParteContraria parteContraria = new ParteContraria(idParteContraria);
+                Processo processo = new Processo(idProcesso);
 
-            Cliente cliente = new Cliente(idCliente);
-            ParteContraria parteContraria = new ParteContraria(idParteContraria);
-            Processo processo = new Processo(idProcesso);
+                FrmCliente frmAlteraCliente = new FrmCliente(cliente, parteContraria, processo, 'A');
 
-            FrmCliente frmAlteraCliente = new FrmCliente(cliente,parteContraria,processo,'A');
-
-            frmAlteraCliente.Text = "Altera Cliente";
-            frmAlteraCliente.ShowDialog();
+                frmAlteraCliente.Text = "Altera Cliente";
+                frmAlteraCliente.ShowDialog();
+            }
+            catch (Exception Err)
+            {
+                MessageBox.Show("SELECIONE UM REGISTRO PRIMEIRO!", "Erro", MessageBoxButtons.OK);
+            }
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
@@ -71,18 +77,25 @@ namespace SistemaRegistros
 
         private void btnConsultar_Click(object sender, EventArgs e)
         {
-            int idCliente = int.Parse(dgvClientes.CurrentRow.Cells[0].Value.ToString());
-            int idParteContraria = int.Parse(dgvClientes.CurrentRow.Cells[1].Value.ToString());
-            int idProcesso = int.Parse(dgvClientes.CurrentRow.Cells[2].Value.ToString());
+            try
+            {
+                int idCliente = int.Parse(dgvClientes.CurrentRow.Cells[0].Value.ToString());
+                int idParteContraria = int.Parse(dgvClientes.CurrentRow.Cells[1].Value.ToString());
+                int idProcesso = int.Parse(dgvClientes.CurrentRow.Cells[2].Value.ToString());
 
-            Cliente cliente = new Cliente(idCliente);
-            ParteContraria parteContraria = new ParteContraria(idParteContraria);
-            Processo processo = new Processo(idProcesso);
+                Cliente cliente = new Cliente(idCliente);
+                ParteContraria parteContraria = new ParteContraria(idParteContraria);
+                Processo processo = new Processo(idProcesso);
 
-            FrmCliente frmConsultaCliente = new FrmCliente(cliente, parteContraria, processo,'C');
+                FrmCliente frmConsultaCliente = new FrmCliente(cliente, parteContraria, processo, 'C');
 
-            frmConsultaCliente.Text = "Consulta Cliente";
-            frmConsultaCliente.ShowDialog();
+                frmConsultaCliente.Text = "Consulta Cliente";
+                frmConsultaCliente.ShowDialog();
+            }
+            catch(Exception Err)
+            {
+                MessageBox.Show("SELECIONE UM REGISTRO PRIMEIRO!", "Erro", MessageBoxButtons.OK);
+            }
         }
 
         private void btnPesquisar_Click(object sender, EventArgs e)

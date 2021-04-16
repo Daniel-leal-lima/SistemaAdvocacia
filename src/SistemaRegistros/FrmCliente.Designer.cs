@@ -94,7 +94,7 @@ namespace SistemaRegistros
             // 
             // RtxtAndamento
             // 
-            this.RtxtAndamento.Location = new System.Drawing.Point(17, 467);
+            this.RtxtAndamento.Location = new System.Drawing.Point(13, 430);
             this.RtxtAndamento.Name = "RtxtAndamento";
             this.RtxtAndamento.Size = new System.Drawing.Size(536, 193);
             this.RtxtAndamento.TabIndex = 9;
@@ -112,7 +112,7 @@ namespace SistemaRegistros
             // lblAndamento
             // 
             this.lblAndamento.AutoSize = true;
-            this.lblAndamento.Location = new System.Drawing.Point(17, 431);
+            this.lblAndamento.Location = new System.Drawing.Point(13, 412);
             this.lblAndamento.Name = "lblAndamento";
             this.lblAndamento.Size = new System.Drawing.Size(140, 15);
             this.lblAndamento.TabIndex = 11;
@@ -134,7 +134,7 @@ namespace SistemaRegistros
             this.dpRequerente.Controls.Add(this.lblNomeRequerente);
             this.dpRequerente.Location = new System.Drawing.Point(13, 106);
             this.dpRequerente.Name = "dpRequerente";
-            this.dpRequerente.Size = new System.Drawing.Size(535, 193);
+            this.dpRequerente.Size = new System.Drawing.Size(535, 166);
             this.dpRequerente.TabIndex = 12;
             this.dpRequerente.TabStop = false;
             this.dpRequerente.Text = "informações do Requerente:";
@@ -162,7 +162,7 @@ namespace SistemaRegistros
             // 
             // txtNomeCaptador
             // 
-            this.txtNomeCaptador.Location = new System.Drawing.Point(104, 157);
+            this.txtNomeCaptador.Location = new System.Drawing.Point(324, 118);
             this.txtNomeCaptador.Name = "txtNomeCaptador";
             this.txtNomeCaptador.Size = new System.Drawing.Size(153, 23);
             this.txtNomeCaptador.TabIndex = 16;
@@ -170,7 +170,7 @@ namespace SistemaRegistros
             // lblNomeIndicacao
             // 
             this.lblNomeIndicacao.AutoSize = true;
-            this.lblNomeIndicacao.Location = new System.Drawing.Point(6, 160);
+            this.lblNomeIndicacao.Location = new System.Drawing.Point(226, 121);
             this.lblNomeIndicacao.Name = "lblNomeIndicacao";
             this.lblNomeIndicacao.Size = new System.Drawing.Size(95, 15);
             this.lblNomeIndicacao.TabIndex = 15;
@@ -223,9 +223,9 @@ namespace SistemaRegistros
             this.gpParteContraria.Controls.Add(this.lblCpf_CnpjContraria);
             this.gpParteContraria.Controls.Add(this.txtNomePContraria);
             this.gpParteContraria.Controls.Add(this.lblNomePContraria);
-            this.gpParteContraria.Location = new System.Drawing.Point(17, 305);
+            this.gpParteContraria.Location = new System.Drawing.Point(13, 288);
             this.gpParteContraria.Name = "gpParteContraria";
-            this.gpParteContraria.Size = new System.Drawing.Size(531, 113);
+            this.gpParteContraria.Size = new System.Drawing.Size(535, 113);
             this.gpParteContraria.TabIndex = 13;
             this.gpParteContraria.TabStop = false;
             this.gpParteContraria.Text = "informações da Parte Contrária:";
@@ -299,7 +299,7 @@ namespace SistemaRegistros
             // 
             // btnCadastra
             // 
-            this.btnCadastra.Location = new System.Drawing.Point(191, 675);
+            this.btnCadastra.Location = new System.Drawing.Point(196, 640);
             this.btnCadastra.Name = "btnCadastra";
             this.btnCadastra.Size = new System.Drawing.Size(165, 50);
             this.btnCadastra.TabIndex = 16;
@@ -385,9 +385,9 @@ namespace SistemaRegistros
             this.gpProcesso.Controls.Add(this.cbTipoAcao);
             this.gpProcesso.Controls.Add(this.lblArea);
             this.gpProcesso.Controls.Add(this.cbArea);
-            this.gpProcesso.Location = new System.Drawing.Point(8, 5);
+            this.gpProcesso.Location = new System.Drawing.Point(13, -2);
             this.gpProcesso.Name = "gpProcesso";
-            this.gpProcesso.Size = new System.Drawing.Size(540, 102);
+            this.gpProcesso.Size = new System.Drawing.Size(535, 102);
             this.gpProcesso.TabIndex = 28;
             this.gpProcesso.TabStop = false;
             this.gpProcesso.Text = "Infromações do Processo:";
@@ -413,13 +413,15 @@ namespace SistemaRegistros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(607, 745);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(572, 695);
             this.Controls.Add(this.gpProcesso);
             this.Controls.Add(this.btnCadastra);
             this.Controls.Add(this.gpParteContraria);
             this.Controls.Add(this.dpRequerente);
             this.Controls.Add(this.lblAndamento);
             this.Controls.Add(this.RtxtAndamento);
+            this.MaximizeBox = false;
             this.Name = "FrmCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmRequerente";

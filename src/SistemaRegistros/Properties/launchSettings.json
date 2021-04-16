@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SistemaRegistros": {
+      "commandName": "Project",
+      "remoteDebugEnabled": false
+    }
+  }
+}

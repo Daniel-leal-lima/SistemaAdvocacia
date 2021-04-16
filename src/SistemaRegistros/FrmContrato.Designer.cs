@@ -92,7 +92,7 @@ namespace SistemaRegistros
             // 
             this.dgvParcelas.AllowUserToAddRows = false;
             this.dgvParcelas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvParcelas.Location = new System.Drawing.Point(9, 635);
+            this.dgvParcelas.Location = new System.Drawing.Point(12, 551);
             this.dgvParcelas.MultiSelect = false;
             this.dgvParcelas.Name = "dgvParcelas";
             this.dgvParcelas.ReadOnly = true;
@@ -107,7 +107,7 @@ namespace SistemaRegistros
             // lblParcelas
             // 
             this.lblParcelas.AutoSize = true;
-            this.lblParcelas.Location = new System.Drawing.Point(9, 617);
+            this.lblParcelas.Location = new System.Drawing.Point(12, 533);
             this.lblParcelas.Name = "lblParcelas";
             this.lblParcelas.Size = new System.Drawing.Size(53, 15);
             this.lblParcelas.TabIndex = 10;
@@ -115,16 +115,16 @@ namespace SistemaRegistros
             // 
             // RtxtObsContrato
             // 
-            this.RtxtObsContrato.Location = new System.Drawing.Point(12, 776);
+            this.RtxtObsContrato.Location = new System.Drawing.Point(597, 69);
             this.RtxtObsContrato.Name = "RtxtObsContrato";
-            this.RtxtObsContrato.Size = new System.Drawing.Size(276, 108);
+            this.RtxtObsContrato.Size = new System.Drawing.Size(249, 377);
             this.RtxtObsContrato.TabIndex = 11;
             this.RtxtObsContrato.Text = "";
             // 
             // lblObsContrato
             // 
             this.lblObsContrato.AutoSize = true;
-            this.lblObsContrato.Location = new System.Drawing.Point(9, 758);
+            this.lblObsContrato.Location = new System.Drawing.Point(597, 51);
             this.lblObsContrato.Name = "lblObsContrato";
             this.lblObsContrato.Size = new System.Drawing.Size(144, 15);
             this.lblObsContrato.TabIndex = 12;
@@ -133,7 +133,7 @@ namespace SistemaRegistros
             // lblNProcesso
             // 
             this.lblNProcesso.AutoSize = true;
-            this.lblNProcesso.Location = new System.Drawing.Point(135, 46);
+            this.lblNProcesso.Location = new System.Drawing.Point(129, 11);
             this.lblNProcesso.Name = "lblNProcesso";
             this.lblNProcesso.Size = new System.Drawing.Size(121, 15);
             this.lblNProcesso.TabIndex = 16;
@@ -156,7 +156,7 @@ namespace SistemaRegistros
             this.gpCobranca.Controls.Add(this.lblDividido);
             this.gpCobranca.Controls.Add(this.cbDividoEm);
             this.gpCobranca.Controls.Add(this.lbltipopagamento);
-            this.gpCobranca.Location = new System.Drawing.Point(18, 311);
+            this.gpCobranca.Location = new System.Drawing.Point(12, 244);
             this.gpCobranca.Name = "gpCobranca";
             this.gpCobranca.Size = new System.Drawing.Size(543, 189);
             this.gpCobranca.TabIndex = 20;
@@ -339,9 +339,9 @@ namespace SistemaRegistros
             // 
             // btnCadastraCobranca
             // 
-            this.btnCadastraCobranca.Location = new System.Drawing.Point(361, 813);
+            this.btnCadastraCobranca.Location = new System.Drawing.Point(640, 535);
             this.btnCadastraCobranca.Name = "btnCadastraCobranca";
-            this.btnCadastraCobranca.Size = new System.Drawing.Size(121, 82);
+            this.btnCadastraCobranca.Size = new System.Drawing.Size(180, 124);
             this.btnCadastraCobranca.TabIndex = 21;
             this.btnCadastraCobranca.Text = "Cadastrar Cobrança";
             this.btnCadastraCobranca.UseVisualStyleBackColor = true;
@@ -349,7 +349,7 @@ namespace SistemaRegistros
             // 
             // mskNumProcesso
             // 
-            this.mskNumProcesso.Location = new System.Drawing.Point(262, 43);
+            this.mskNumProcesso.Location = new System.Drawing.Point(256, 8);
             this.mskNumProcesso.Mask = "0000000-00\\.0000\\.0\\.00\\.0000";
             this.mskNumProcesso.Name = "mskNumProcesso";
             this.mskNumProcesso.ReadOnly = true;
@@ -360,7 +360,7 @@ namespace SistemaRegistros
             // 
             this.btnAdicionaLinha.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAdicionaLinha.BackgroundImage")));
             this.btnAdicionaLinha.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnAdicionaLinha.Location = new System.Drawing.Point(294, 680);
+            this.btnAdicionaLinha.Location = new System.Drawing.Point(297, 596);
             this.btnAdicionaLinha.Name = "btnAdicionaLinha";
             this.btnAdicionaLinha.Size = new System.Drawing.Size(26, 21);
             this.btnAdicionaLinha.TabIndex = 28;
@@ -372,7 +372,7 @@ namespace SistemaRegistros
             // 
             this.btnRemoveLinha.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRemoveLinha.BackgroundImage")));
             this.btnRemoveLinha.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnRemoveLinha.Location = new System.Drawing.Point(294, 707);
+            this.btnRemoveLinha.Location = new System.Drawing.Point(297, 623);
             this.btnRemoveLinha.Name = "btnRemoveLinha";
             this.btnRemoveLinha.Size = new System.Drawing.Size(26, 21);
             this.btnRemoveLinha.TabIndex = 29;
@@ -384,7 +384,7 @@ namespace SistemaRegistros
             // 
             this.btnSalva.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSalva.BackgroundImage")));
             this.btnSalva.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSalva.Location = new System.Drawing.Point(294, 653);
+            this.btnSalva.Location = new System.Drawing.Point(297, 569);
             this.btnSalva.Name = "btnSalva";
             this.btnSalva.Size = new System.Drawing.Size(26, 21);
             this.btnSalva.TabIndex = 30;
@@ -400,9 +400,9 @@ namespace SistemaRegistros
             this.gpParcela.Controls.Add(this.cbSituacao);
             this.gpParcela.Controls.Add(this.lblSituacao);
             this.gpParcela.Controls.Add(this.lblDataVencimento);
-            this.gpParcela.Location = new System.Drawing.Point(12, 506);
+            this.gpParcela.Location = new System.Drawing.Point(12, 439);
             this.gpParcela.Name = "gpParcela";
-            this.gpParcela.Size = new System.Drawing.Size(549, 86);
+            this.gpParcela.Size = new System.Drawing.Size(543, 86);
             this.gpParcela.TabIndex = 31;
             this.gpParcela.TabStop = false;
             this.gpParcela.Text = "Informações de Parcela:";
@@ -495,9 +495,9 @@ namespace SistemaRegistros
             this.gpRequerente.Controls.Add(this.lblCpfRquerente);
             this.gpRequerente.Controls.Add(this.txtNomeRequerente);
             this.gpRequerente.Controls.Add(this.lblNomeRequerente);
-            this.gpRequerente.Location = new System.Drawing.Point(18, 86);
+            this.gpRequerente.Location = new System.Drawing.Point(12, 51);
             this.gpRequerente.Name = "gpRequerente";
-            this.gpRequerente.Size = new System.Drawing.Size(543, 135);
+            this.gpRequerente.Size = new System.Drawing.Size(543, 103);
             this.gpRequerente.TabIndex = 27;
             this.gpRequerente.TabStop = false;
             this.gpRequerente.Text = "informações do Requerente:";
@@ -513,7 +513,7 @@ namespace SistemaRegistros
             this.gpCaptador.Controls.Add(this.lblNomeIndicacao);
             this.gpCaptador.Controls.Add(this.lblFoiIndicacao);
             this.gpCaptador.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.gpCaptador.Location = new System.Drawing.Point(18, 227);
+            this.gpCaptador.Location = new System.Drawing.Point(12, 160);
             this.gpCaptador.Name = "gpCaptador";
             this.gpCaptador.Size = new System.Drawing.Size(543, 78);
             this.gpCaptador.TabIndex = 32;
@@ -591,7 +591,7 @@ namespace SistemaRegistros
             // lblObsParcela
             // 
             this.lblObsParcela.AutoSize = true;
-            this.lblObsParcela.Location = new System.Drawing.Point(323, 617);
+            this.lblObsParcela.Location = new System.Drawing.Point(326, 533);
             this.lblObsParcela.Name = "lblObsParcela";
             this.lblObsParcela.Size = new System.Drawing.Size(134, 15);
             this.lblObsParcela.TabIndex = 34;
@@ -599,7 +599,7 @@ namespace SistemaRegistros
             // 
             // RtxtObsParcela
             // 
-            this.RtxtObsParcela.Location = new System.Drawing.Point(326, 635);
+            this.RtxtObsParcela.Location = new System.Drawing.Point(329, 551);
             this.RtxtObsParcela.Name = "RtxtObsParcela";
             this.RtxtObsParcela.Size = new System.Drawing.Size(235, 108);
             this.RtxtObsParcela.TabIndex = 33;
@@ -609,7 +609,7 @@ namespace SistemaRegistros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(605, 907);
+            this.ClientSize = new System.Drawing.Size(875, 695);
             this.Controls.Add(this.lblObsParcela);
             this.Controls.Add(this.RtxtObsParcela);
             this.Controls.Add(this.gpCaptador);
@@ -626,6 +626,7 @@ namespace SistemaRegistros
             this.Controls.Add(this.RtxtObsContrato);
             this.Controls.Add(this.lblParcelas);
             this.Controls.Add(this.dgvParcelas);
+            this.MaximizeBox = false;
             this.Name = "FrmContrato";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmContrato";

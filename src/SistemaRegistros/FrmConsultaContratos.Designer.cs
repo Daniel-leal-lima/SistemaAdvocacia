@@ -176,6 +176,7 @@ namespace SistemaRegistros
             this.Controls.Add(this.btnPesquisar);
             this.Controls.Add(this.dgvContratos);
             this.Controls.Add(this.txtPesquisa);
+            this.MaximizeBox = false;
             this.Name = "FrmConsultaContratos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmConsultaContratos";
