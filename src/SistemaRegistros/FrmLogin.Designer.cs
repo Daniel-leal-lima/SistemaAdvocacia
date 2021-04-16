@@ -88,6 +88,7 @@ namespace SistemaRegistros
             this.Controls.Add(this.btnLogar);
             this.Controls.Add(this.txtSenha);
             this.Controls.Add(this.txtNomeUsuaria);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "FrmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

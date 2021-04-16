@@ -626,6 +626,7 @@ namespace SistemaRegistros
             this.Controls.Add(this.RtxtObsContrato);
             this.Controls.Add(this.lblParcelas);
             this.Controls.Add(this.dgvParcelas);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "FrmContrato";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

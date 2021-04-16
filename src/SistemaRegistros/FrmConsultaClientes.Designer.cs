@@ -162,6 +162,7 @@ namespace SistemaRegistros
             this.Controls.Add(this.dgvClientes);
             this.Controls.Add(this.cbFiltros);
             this.Controls.Add(this.txtPesquisa);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "FrmConsultaClientes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

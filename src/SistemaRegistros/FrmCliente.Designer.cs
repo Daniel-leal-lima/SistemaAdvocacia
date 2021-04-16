@@ -421,6 +421,7 @@ namespace SistemaRegistros
             this.Controls.Add(this.dpRequerente);
             this.Controls.Add(this.lblAndamento);
             this.Controls.Add(this.RtxtAndamento);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "FrmCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
