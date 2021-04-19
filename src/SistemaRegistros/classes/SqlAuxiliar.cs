@@ -13,7 +13,7 @@ namespace SistemaRegistros.classes
 
         private SqlConnection con = null;
 
-        public bool IsParteContrariaNovo(ParteContraria parteContraria) {
+        public bool IsParteContrariaNovoCPFOuCNPJ(ParteContraria parteContraria) {
             FabricaConexao con = new FabricaConexao();
             con.AbreConexao();
             SqlCommand cmd = new SqlCommand("spIsParteContrariaNova", con.GetConexao());
@@ -35,6 +35,29 @@ namespace SistemaRegistros.classes
             }
             con.FechaConexao();
         }
+        public bool IsParteContrariaNovoNome(ParteContraria parteContraria)
+        {
+            FabricaConexao con = new FabricaConexao();
+            con.AbreConexao();
+            SqlCommand cmd = new SqlCommand("spIsParteContrariaNovaPeloNome", con.GetConexao());
+            cmd.Parameters.AddWithValue("@Nome", parteContraria.Nome);
+            cmd.CommandType = CommandType.StoredProcedure;
+            using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+            {
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                if (dt.Rows.Count <= 0)
+                { return true; }
+                else
+                {
+                    IdentificaParteContrariaNome(parteContraria);
+                    return false;
+                }
+            }
+            con.FechaConexao();
+        }
+
+        
 
         public void GeraRelatorio(string nomeCaptador, string mes, string ano)
         {
@@ -200,6 +223,28 @@ namespace SistemaRegistros.classes
             cmd.Parameters.AddWithValue("@CPF", parteContraria.Cpf);
             cmd.Parameters.AddWithValue("@CNPJ", parteContraria.Cnpj);
             cmd.Parameters.AddWithValue("@Tipo", parteContraria.Tipo);
+            cmd.CommandType = CommandType.StoredProcedure;
+            using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+            {
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                if (dt.Rows.Count > 0)
+                {
+                    parteContraria.IdParteContraria = int.Parse(dt.Rows[0][0].ToString());
+                    parteContraria.Nome = dt.Rows[0][1].ToString();
+                    parteContraria.Tipo = dt.Rows[0][2].ToString();
+                    parteContraria.Cpf = dt.Rows[0][3].ToString();
+                    parteContraria.Cnpj = dt.Rows[0][4].ToString();
+                }
+            }
+            con.FechaConexao();
+        }
+        private void IdentificaParteContrariaNome(ParteContraria parteContraria)
+        {
+            FabricaConexao con = new FabricaConexao();
+            con.AbreConexao();
+            SqlCommand cmd = new SqlCommand("spIsParteContrariaNovaPeloNome", con.GetConexao());
+            cmd.Parameters.AddWithValue("@Nome", parteContraria.Nome);
             cmd.CommandType = CommandType.StoredProcedure;
             using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
             {

@@ -155,7 +155,7 @@ BEGIN
 END
 GO
 
-CREATE PROC spIsParteContrariaNova  ----------- VERIFICA SE A PARTE CONTRÁRIA É NOVA
+CREATE PROC spIsParteContrariaNova  ----------- VERIFICA SE A PARTE CONTRÁRIA É NOVA PELO CPF OU CNPJ
 @CPF VARCHAR(11)='',
 @CNPJ VARCHAR(14)='',
 @Tipo CHAR(1)
@@ -169,6 +169,14 @@ BEGIN
 		begin
 			SELECT IdParteContraria,Nome,Tipo,CPF,CNPJ FROM TbParteContraria WHERE CNPJ = @CNPJ
 		end
+END
+GO
+
+CREATE PROC spIsParteContrariaNovaPeloNome  ----------- VERIFICA SE A PARTE CONTRÁRIA É NOVA PELO NOME
+@Nome VARCHAR(90)
+As
+BEGIN
+	 SELECT IdParteContraria,Nome,Tipo,CPF,CNPJ FROM TbParteContraria WHERE Nome = @Nome
 END
 GO
 

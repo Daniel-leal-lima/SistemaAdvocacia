@@ -182,6 +182,7 @@ namespace SistemaRegistros
             InsereDadosNasClasses();
             cbIndicacao.SelectedIndex = 0;
             cbFormadescoberta.SelectedItem = 0;
+            txtNomeCaptador.Enabled = false;
         }
 
         public FrmCliente(Cliente cliente, ParteContraria parteContraria, Processo processo,char tag)
@@ -336,7 +337,25 @@ namespace SistemaRegistros
             InsereDadosNasClasses();
             if (tag.Equals(string.Empty) || tag.Equals("A")) // SÓ IDENTIFICA SE FOR CADASTRAR OU ALTERAR REGISTRO
             {
-                if (sqlAux.IsParteContrariaNovo(parteContraria)) //CASO SEJA UM NOVA PARTE CONTRÁRIA
+                if (sqlAux.IsParteContrariaNovoCPFOuCNPJ(parteContraria)) //CASO SEJA UM NOVA PARTE CONTRÁRIA
+                {
+                    sqlAux.PegaUltimoIdParteContraria(parteContraria);
+                    NovaParteContraria = true;
+                }
+                else
+                {
+                    MessageBox.Show("Parte Contrária já cadastrado no sistema! Completando informações");
+                    Arranja();
+                }
+            }
+        }
+        private void IdentificaParteContrariaPeloNome()
+        {
+            SqlAuxiliar sqlAux = new SqlAuxiliar();
+            InsereDadosNasClasses();
+            if (tag.Equals(string.Empty) || tag.Equals("A")) // SÓ IDENTIFICA SE FOR CADASTRAR OU ALTERAR REGISTRO
+            {
+                if (sqlAux.IsParteContrariaNovoNome(parteContraria)) //CASO SEJA UM NOVA PARTE CONTRÁRIA
                 {
                     sqlAux.PegaUltimoIdParteContraria(parteContraria);
                     NovaParteContraria = true;
@@ -370,6 +389,26 @@ namespace SistemaRegistros
         private void mskCpfPContraria_Leave(object sender, EventArgs e)
         {
             ValidaCpfeCnpj();
+        }
+
+        private void cbIndicacao_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cbIndicacao.SelectedIndex)
+            {
+                case 0:     //ITEM: NÃO
+                    txtNomeCaptador.Enabled = false;
+                    txtNomeCaptador.Text = string.Empty;
+                    break;
+                case 1:     //ITEM: SIM
+                    txtNomeCaptador.Enabled = true;
+                    break;
+            }
+        }
+
+        private void txtNomePContraria_Leave(object sender, EventArgs e)
+        {
+            IdentificaParteContrariaPeloNome();
+            //MessageBox.Show(parteContraria.ToString()); -- LOG PRA IDENTIFICAR SE ESTÁ RECONHECENDO PELO NOME
         }
     }
 }

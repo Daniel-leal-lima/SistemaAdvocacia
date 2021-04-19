@@ -187,6 +187,7 @@ namespace SistemaRegistros
             this.cbIndicacao.Name = "cbIndicacao";
             this.cbIndicacao.Size = new System.Drawing.Size(68, 23);
             this.cbIndicacao.TabIndex = 14;
+            this.cbIndicacao.SelectedIndexChanged += new System.EventHandler(this.cbIndicacao_SelectedIndexChanged);
             // 
             // lblFoiIndicacao
             // 
@@ -287,6 +288,7 @@ namespace SistemaRegistros
             this.txtNomePContraria.Name = "txtNomePContraria";
             this.txtNomePContraria.Size = new System.Drawing.Size(192, 23);
             this.txtNomePContraria.TabIndex = 1;
+            this.txtNomePContraria.Leave += new System.EventHandler(this.txtNomePContraria_Leave);
             // 
             // lblNomePContraria
             // 
