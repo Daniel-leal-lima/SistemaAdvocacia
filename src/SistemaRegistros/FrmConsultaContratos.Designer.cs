@@ -142,11 +142,11 @@ namespace SistemaRegistros
             // 
             // btnVoltar
             // 
-            this.btnVoltar.Location = new System.Drawing.Point(534, 372);
+            this.btnVoltar.Location = new System.Drawing.Point(534, 373);
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.Size = new System.Drawing.Size(75, 61);
             this.btnVoltar.TabIndex = 17;
-            this.btnVoltar.Text = "VOLTAR P/ CLIENTES";
+            this.btnVoltar.Text = "Voltar P/ Clientes";
             this.btnVoltar.UseVisualStyleBackColor = true;
             this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
             // 

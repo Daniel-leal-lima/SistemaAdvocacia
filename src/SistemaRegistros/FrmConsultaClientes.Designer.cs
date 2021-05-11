@@ -138,11 +138,11 @@ namespace SistemaRegistros
             // 
             // btnContratos
             // 
-            this.btnContratos.Location = new System.Drawing.Point(517, 393);
+            this.btnContratos.Location = new System.Drawing.Point(525, 382);
             this.btnContratos.Name = "btnContratos";
             this.btnContratos.Size = new System.Drawing.Size(76, 65);
             this.btnContratos.TabIndex = 9;
-            this.btnContratos.Text = "Contratos";
+            this.btnContratos.Text = "Cobrança";
             this.btnContratos.UseVisualStyleBackColor = true;
             this.btnContratos.Visible = false;
             this.btnContratos.Click += new System.EventHandler(this.btnContratos_Click);

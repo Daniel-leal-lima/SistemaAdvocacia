@@ -325,11 +325,7 @@ namespace SistemaRegistros
             this.cbTipoAcao.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbTipoAcao.FormattingEnabled = true;
             this.cbTipoAcao.Items.AddRange(new object[] {
-            "irmao",
-            "irmã",
-            "",
-            "ima",
-            "imu"});
+            "Teste"});
             this.cbTipoAcao.Location = new System.Drawing.Point(379, 61);
             this.cbTipoAcao.Name = "cbTipoAcao";
             this.cbTipoAcao.Size = new System.Drawing.Size(121, 23);
@@ -401,11 +397,7 @@ namespace SistemaRegistros
             this.cbArea.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbArea.FormattingEnabled = true;
             this.cbArea.Items.AddRange(new object[] {
-            "irmao",
-            "irmã",
-            "",
-            "ima",
-            "imu"});
+            "Teste"});
             this.cbArea.Location = new System.Drawing.Point(141, 60);
             this.cbArea.Name = "cbArea";
             this.cbArea.Size = new System.Drawing.Size(121, 23);
