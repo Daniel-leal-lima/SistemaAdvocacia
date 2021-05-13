@@ -1,0 +1,319 @@
+Bancários
+Cartão de Crédito
+Consórcio
+Estabelecimentos de Ensino
+Financiamento de Produto
+Fornecimento de Água
+Fornecimento de Energia Elétrica
+Planos de Saúde
+Seguro
+Serviços Hospitalares
+Serviços Profissionais
+Assinatura Básica Mensal
+Cobrança indevida de ligações
+Pulsos Excedentes
+Acidente Aéreo
+Atraso de vôo
+Cancelamento de vôo
+Extravio de bagagem
+Overbooking
+Turismo
+Abatimento proporcional do preço
+Indenização por Dano Material
+Indenização por Dano Moral
+Inclusão Indevida em Cadastro de Inadimplentes
+Protesto Indevido de Título
+Código
+Interpretação / Revisão de Contrato
+Rescisão do contrato e devolução do dinheiro
+Substituição do Produto
+indevida de ligações
+Agrotóxicos
+Fauna
+Flora
+Dano ao Erário
+Enriquecimento ilícito
+Violação aos Princípios Administrativos
+Incorporação Imobiliária
+Prestação de Serviços
+Assembléia
+Eleição
+Extinção
+Fiscalização
+Atos Administrativos
+Ato Lesivo ao Patrimônio Artístico, Estético, Histórico ou Turístico
+Alienação Judicial
+Liberação de mercadorias
+Levantamento de depósito
+Levantamento de Valor
+Compra e Venda
+Liberação de Veículo Apreendido
+Principal
+Cédula de Crédito Bancário
+Cédula de Crédito à Exportação
+Cédula de Crédito Comercial
+Cédula de Crédito Industrial
+Cédula de Crédito Rural
+Cédula de Produto Rural
+Cédula Hipotecária
+Cheque
+Debêntures
+Duplicata
+Letra de Câmbio
+Nota de Crédito Comercial
+Nota de Crédito Industrial
+Nota de Crédito Rural
+Nota Promissória
+Warrant
+Arresto de Embarcação
+Liminar
+Caução / Contracautela
+Requisitos
+Inadimplemento
+Anulação
+Perda da Propriedade
+Abandono
+Avaria
+Responsabilidade do Comandante ou Capitão
+Assistência Judiciária Gratuita
+Engajamento e Profissionais Marítimos
+Seguros Marítimos
+Aluguel de Embarcações (Fretamento E Carta Partida)
+Hipoteca Marítima
+Créditos / Privilégios Marítimos
+Quanto à Embarcação
+Quanto à Carga
+Acidentes da Navegação
+Assistência / Salvamento
+Propriedade Fiduciária
+Alienação Fiduciária
+Citação
+Constrição / Penhora / Avaliação / Indisponibilidade de Bens
+Busca e Apreensão
+Imissão na Posse
+Antecipação de Tutela / Tutela Específica
+depoimento
+Expropriação de Bens
+Estudo Social
+Estudo Psicológico
+DIREITO CIVIL
+DIREITO DO CONSUMIDOR
+Intimação
+Sustação de Protesto
+Obrigações
+Obrigação de Entregar
+Obrigação de Fazer / Não Fazer
+Defeito, nulidade ou anulação
+Pagamento em Consignação
+Locação de Imóvel
+Locação de Móvel
+Concurso de Credores
+Benefício de Ordem
+Valor da Execução / Cálculo /Atualização
+Multa de 10%
+Remição
+Sucessão
+Causas Supervenientes à Sentença
+Multa Cominatória / Astreintes
+Alteração de Coisa Comum
+Divisão e Demarcação
+Despejo para Uso Próprio
+Despejo para Uso de Ascendentes e Descendentes
+Despejo por Denúncia Vazia
+Dissolução
+Prescrição e Decadência
+Pagamento
+Pagamento com Sub-rogação
+Imputação do Pagamento
+Dação em Pagamento
+Novação
+Compensação
+Confusão
+Remissão das Dívidas
+Ato Atentatório à Dignidade da Justiça
+Nulidade / Inexigibilidade do Título
+Extinção da Execução
+Fraude à Execução
+Imunidade de Execução
+Efeito Suspensivo / Impugnação / Embargos à Execução
+Benfeitorias
+Esbulho / Turbação / Ameaça
+Do Juiz
+Dos Auxiliares da Justiça
+Ministério Público
+Competência
+Câmbio
+Parceria Agrícola e/ou pecuária
+Previdência privada
+Representação comercial
+Sistema Financeiro da Habitação
+Edição
+Agêncie e Distribuição
+Arrendamento Rural
+Arrendamento Mercantil
+Comissão
+Corretagem
+Doação
+Empreitada
+Fiança
+Mandato
+Troca ou Permuta
+Transação
+Transporte de Coisas
+Transporte de Pessoas
+Estimatório
+Comodato
+Mútuo
+Constituição de Renda
+Jogo e Aposta
+Compromisso
+Contratos Bancários
+Franquia
+Usufruto
+Rural - Agrícola/Pecuário
+Industrial / Mercantil
+Direitos e Títulos de Crédito
+Veículos
+Legal
+Hipoteca
+Anticrese
+Crédito Rural
+Cobrança de Aluguéis - Sem despejo
+Provas
+Liquidação
+Autofalência
+Apuração de haveres
+Revogação de atos praticados em prejuízo de credores e da massa Ineficácia de atos em relação à massa
+Administração judicial
+Classificação de créditos
+DIREITO ADMINISTRATIVO E OUTRAS MATÉRIAS DE DIREITO PÚBLICO
+Substituição da Parte
+Direito Autoral
+Patente
+Desenho Industrial
+Marca
+Evicção ou Vicio Redibitório
+Cessão de Crédito
+Equivalência salarial
+Transferência de Financiamento(contrato de gaveta)
+Sustação/Alteração de Leilão
+Revisão do Saldo Devedor
+Transporte Aéreo
+Constituição
+Desconsideração da Personalidade
+Jurídica
+Ingresso e Exclusão dos Sócios na Sociedade
+Responsabilidade dos sócios
+Transferência de cotas
+Títulos de Crédito
+Registro / Cadastro do Armador
+Inscrição / Registro da Embarcação
+Agenciamento
+Corretagem de Embarcação
+Praticagem
+Assunção de Dívida
+Atos Unilaterais
+Preferências e Privilégios Creditórios
+Correção Monetária
+Perdas e Danos
+Juros de Mora - Legais / Contratuais
+Cláusula Penal
+Arras ou Sinal
+Promessa de Recompensa
+Pagamento Indevido
+Enriquecimento sem Causa
+Registro de nascimento após prazo
+Retificação de Nome
+Clandestinos
+Retificação de Data de Nascimento
+Retificação de Sexo
+Registro de Óbito após prazo legal
+Registro de Nascimento de Filho de
+Brasileiro Nascido no Exterior
+Nulidade
+Honorários Periciais
+Coligação
+Transformação
+Incorporação
+Fusão
+Cisão
+Alteração de capital
+Inclusão de associado
+Exclusão de associado
+Direito de Preferência
+Transporte Terrestre
+Telefonia
+Imissão
+Aquisição
+Retificação de Área de Imóvel
+Direito de Vizinhança
+Condomínio
+Administração
+Despesas Condominiais
+Direitos / Deveres do Condômino
+Vaga de garagem
+Propriedade Resolúvel
+Enfiteuse
+Servidão
+Superfície
+Uso
+Habitação
+Promessa de Compra e Venda
+Programa de Computador
+Erro Médico
+Acidente de Trânsito
+Lei de Imprensa
+Direito de Imagem
+Rescisão / Resolução
+Adjudicação Compulsória
+Litisconsórcio e Assistência
+Valor da Causa
+Desconto em folha de pagamento
+Adimplemento e Extinção
+Depósito
+Intervenção de Terceiros
+Retificação de Assento de Óbito
+Associação
+Fundação de Direito Privado
+Quitação
+Reajuste de Prestações
+Vícios de Construção
+Dano Ambiental
+Expurgos Inflacionários / Planos Econômicos
+Honorários Advocatícios
+Usucapião Especial (Constitucional)
+Usucapião Extraordinária
+Usucapião Ordinária
+Usucapião Especial Coletiva
+Usucapião da L 6.969/1981
+Aposentadoria por Invalidez
+Acidentária
+Incapacidade Laborativa Parcial
+Incapacidade Laborativa Permanente
+Incapacidade Laborativa Temporária
+Movimentos Repetitivos/Tenossinovite/LER/DORT
+Redução da Capacidade Auditiva
+Auxílio-Doença Acidentário
+Auxílio-Acidente (Art. 86)
+Recuperação extrajudicial
+Convolação de recuperação judicial em falência
+Conta de Participação
+Nome Coletivo
+Comandita Simples
+Limitada
+Anônima
+Comandita por Ações
+Coligadas
+Dependente de Autorização
+Estrangeira
+Pode ser selecionado qualquer
+assunto vinculado à competência
+Bloqueio de Matrícula
+Cancelamento de Hipoteca
+Por Remição
+Por Terceiro Prejudicado
+Inscrição na Matrícula de Registro
+Torrens
+Instituição de Bem de Família
+Registro Civil das Pessoas Naturais
+#N/D
