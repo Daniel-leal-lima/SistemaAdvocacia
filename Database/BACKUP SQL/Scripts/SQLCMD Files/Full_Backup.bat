@@ -1,0 +1,1 @@
+sqlcmd -S DESKTOP-7CTC8RU\SQLEXPRESS -E -i "C:\Scripts\SQL Files\Full_Backups.sql" -o "C:\scripts\Output\Full_Backup.log"
