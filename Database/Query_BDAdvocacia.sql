@@ -554,8 +554,6 @@ BEGIN
 					ON Processo.IdParteContraria= ParteContraria.IdParteContraria
 				WHERE Processo.IdProcesso
 					NOT IN (SELECT IdProcesso FROM TbContrato)
-					AND Cliente.IdCliente
-					NOT IN (SELECT IdCliente FROM TbParcela)
 		end
 	IF(@Filtro='Dívidas não Registradas')
 		begin
