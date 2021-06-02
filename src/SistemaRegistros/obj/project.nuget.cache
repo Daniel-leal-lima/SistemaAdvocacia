@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "aIsMJFQEJNqi+PMMXyXrtytbUaxhA/pdoUKtBxzjnf9tTc+GcCfb2iWqMuCHnA/im3QPt5C78WUGio1qWOBnnQ==",
+  "dgSpecHash": "HljK05ZFCGU5JpzmkoVk+O2aWuLoJCVS7+nQHDD/i8DMnX5ovjXwlOmJ2bKuMcC49Xf27MJ40ndQDI9DJtk3FA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Intel\\Desktop\\SistemaAdvocacia\\src\\SistemaRegistros\\SistemaRegistros.csproj",
   "expectedPackageFiles": [
@@ -91,7 +91,10 @@
     "C:\\Users\\Intel\\.nuget\\packages\\system.threading.tasks.extensions\\4.3.0\\system.threading.tasks.extensions.4.3.0.nupkg.sha512",
     "C:\\Users\\Intel\\.nuget\\packages\\system.threading.timer\\4.3.0\\system.threading.timer.4.3.0.nupkg.sha512",
     "C:\\Users\\Intel\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
-    "C:\\Users\\Intel\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512"
+    "C:\\Users\\Intel\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
+    "C:\\Users\\Intel\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.10\\microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
+    "C:\\Users\\Intel\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\3.1.0\\microsoft.windowsdesktop.app.ref.3.1.0.nupkg.sha512",
+    "C:\\Users\\Intel\\.nuget\\packages\\microsoft.netcore.app.ref\\3.1.0\\microsoft.netcore.app.ref.3.1.0.nupkg.sha512"
   ],
   "logs": []
 }

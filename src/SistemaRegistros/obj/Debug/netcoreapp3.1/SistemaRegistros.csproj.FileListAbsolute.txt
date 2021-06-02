@@ -117,4 +117,4 @@ C:\Users\Intel\Desktop\SistemaAdvocacia\src\SistemaRegistros\obj\Debug\netcoreap
 C:\Users\Intel\Desktop\SistemaAdvocacia\src\SistemaRegistros\obj\Debug\netcoreapp3.1\SistemaRegistros.dll
 C:\Users\Intel\Desktop\SistemaAdvocacia\src\SistemaRegistros\obj\Debug\netcoreapp3.1\SistemaRegistros.pdb
 C:\Users\Intel\Desktop\SistemaAdvocacia\src\SistemaRegistros\obj\Debug\netcoreapp3.1\SistemaRegistros.genruntimeconfig.cache
-C:\Users\Intel\Desktop\SistemaAdvocacia\src\SistemaRegistros\obj\Debug\netcoreapp3.1\SistemaRegistros.csprojAssemblyReference.cache
+C:\Users\Intel\Desktop\SistemaAdvocacia\src\SistemaRegistros\obj\Debug\netcoreapp3.1\SistemaRegistros.csproj.AssemblyReference.cache

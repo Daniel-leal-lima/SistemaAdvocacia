@@ -183,6 +183,10 @@ namespace SistemaRegistros
             cbIndicacao.SelectedIndex = 0;
             cbFormadescoberta.SelectedItem = 0;
             txtNomeCaptador.Enabled = false;
+
+            // ESCOLHENDO PESSOA FÍSICA COMO PADRÃO 
+            rbFisico.Checked = true;
+            MudaPfPraPe();
         }
 
         public FrmCliente(Cliente cliente, ParteContraria parteContraria, Processo processo,char tag)
@@ -205,11 +209,6 @@ namespace SistemaRegistros
             this.tag = tag.ToString();
         }
 
-        private void FrmCliente_Load(object sender, EventArgs e)
-        {
-            rbFisico.Checked = true;
-            MudaPfPraPe();
-        }
 
         private void btnCadastra_Click(object sender, EventArgs e)
         {
