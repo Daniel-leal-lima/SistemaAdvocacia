@@ -839,7 +839,6 @@ namespace SistemaRegistros
             this.Name = "FrmCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmRequerente";
-            this.Load += new System.EventHandler(this.FrmCliente_Load);
             this.dpRequerente.ResumeLayout(false);
             this.dpRequerente.PerformLayout();
             this.gpParteContraria.ResumeLayout(false);

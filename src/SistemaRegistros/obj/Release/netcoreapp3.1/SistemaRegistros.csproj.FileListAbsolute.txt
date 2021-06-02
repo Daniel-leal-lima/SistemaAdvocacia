@@ -39,7 +39,6 @@ C:\Users\Intel\Desktop\SistemaAdvocacia\src\SistemaRegistros\bin\Release\netcore
 C:\Users\Intel\Desktop\SistemaAdvocacia\src\SistemaRegistros\bin\Release\netcoreapp3.1\runtimes\win-x86\native\sni.dll
 C:\Users\Intel\Desktop\SistemaAdvocacia\src\SistemaRegistros\bin\Release\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\Intel\Desktop\SistemaAdvocacia\src\SistemaRegistros\bin\Release\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
-C:\Users\Intel\Desktop\SistemaAdvocacia\src\SistemaRegistros\obj\Release\netcoreapp3.1\SistemaRegistros.csprojAssemblyReference.cache
 C:\Users\Intel\Desktop\SistemaAdvocacia\src\SistemaRegistros\obj\Release\netcoreapp3.1\SistemaRegistros.Form1.resources
 C:\Users\Intel\Desktop\SistemaAdvocacia\src\SistemaRegistros\obj\Release\netcoreapp3.1\SistemaRegistros.FrmCliente.resources
 C:\Users\Intel\Desktop\SistemaAdvocacia\src\SistemaRegistros\obj\Release\netcoreapp3.1\SistemaRegistros.FrmConsultaClientes.resources
